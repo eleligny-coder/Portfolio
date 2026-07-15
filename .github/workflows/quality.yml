@@ -34,5 +34,25 @@ jobs:
       - name: TypeScript
         run: npm run typecheck
 
-      - name: Static export
-        run: npm run build
+      - name: Run static export
+        id: static_export
+        shell: bash
+        run: |
+          set +e
+          npm run build > build.log 2>&1
+          code=$?
+          echo "exit_code=$code" >> "$GITHUB_OUTPUT"
+          cat build.log
+          exit 0
+
+      - name: Upload build log on failure
+        if: steps.static_export.outputs.exit_code != '0'
+        uses: actions/upload-artifact@v4
+        with:
+          name: static-export-log
+          path: build.log
+          retention-days: 3
+
+      - name: Fail when static export failed
+        if: steps.static_export.outputs.exit_code != '0'
+        run: exit 1
