@@ -1,6 +1,6 @@
 {
   "name": "portfolio-elie-leligny",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -8,7 +8,9 @@
     "start": "next start",
     "lint": "eslint .",
     "typecheck": "tsc --noEmit",
-    "check": "npm run lint && npm run typecheck && npm run build"
+    "check": "npm run lint && npm run typecheck && npm run build",
+    "pages:preview": "npm run build && wrangler pages dev out",
+    "pages:deploy": "npm run build && wrangler pages deploy"
   },
   "dependencies": {
     "next": "16.2.10",
@@ -21,6 +23,7 @@
     "@types/react-dom": "19.2.3",
     "eslint": "9.39.2",
     "eslint-config-next": "16.2.10",
-    "typescript": "5.9.3"
+    "typescript": "5.9.3",
+    "wrangler": "4.111.0"
   }
 }
