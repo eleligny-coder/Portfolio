@@ -98,5 +98,3 @@ export const onRequestPost = async ({ request, env }: PagesContext): Promise<Res
     return json({ ok: false, message: "Requête invalide." }, 400);
   }
 };
-
-export const onRequest = () => json({ ok: false, message: "Méthode non autorisée." }, 405);
