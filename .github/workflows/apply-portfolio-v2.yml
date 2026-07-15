@@ -1,0 +1,44 @@
+name: Apply portfolio V2
+
+on:
+  push:
+    branches:
+      - agent/complete-portfolio-content
+    paths:
+      - .github/workflows/apply-portfolio-v2.yml
+
+permissions:
+  contents: write
+
+jobs:
+  apply:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout branch
+        uses: actions/checkout@v4
+        with:
+          ref: agent/complete-portfolio-content
+          fetch-depth: 0
+
+      - name: Restore complete source tree
+        shell: bash
+        run: |
+          cat \
+            .portfolio-bootstrap/part-00 \
+            .portfolio-bootstrap/part-01 \
+            .portfolio-bootstrap/part-02a \
+            .portfolio-bootstrap/part-02b \
+            .portfolio-bootstrap/part-03 \
+            | base64 -d > /tmp/portfolio-v2.tar.xz
+          tar -xJf /tmp/portfolio-v2.tar.xz -C .
+          rm -rf .portfolio-bootstrap
+          rm -f .github/workflows/apply-portfolio-v2.yml
+
+      - name: Commit complete portfolio
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "feat: complete portfolio content and placeholders"
+          git push origin HEAD:agent/complete-portfolio-content
