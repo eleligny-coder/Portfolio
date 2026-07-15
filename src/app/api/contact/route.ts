@@ -1,3 +1,44 @@
-import {NextResponse} from "next/server";import {site} from "@/data/site";
-function clean(v:unknown,max:number){return typeof v==="string"?v.trim().slice(0,max):""}function validEmail(v:string){return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)}
-export async function POST(req:Request){try{const b=await req.json();const d={name:clean(b.name,100),email:clean(b.email,180),company:clean(b.company,120),requestType:clean(b.requestType,100),budget:clean(b.budget,80),deadline:clean(b.deadline,120),message:clean(b.message,5000),website:clean(b.website,200)};if(d.website)return NextResponse.json({message:"Message reçu."},{status:202});if(d.name.length<2||!validEmail(d.email)||d.requestType.length<2||d.message.length<20)return NextResponse.json({message:"Vérifiez les champs du formulaire."},{status:400});const key=process.env.RESEND_API_KEY,from=process.env.CONTACT_FROM_EMAIL,to=process.env.CONTACT_TO_EMAIL??site.email;if(!key||!from)return NextResponse.json({message:`Le formulaire n’est pas encore connecté. Écrivez à ${site.email}.`},{status:503});const r=await fetch("https://api.resend.com/emails",{method:"POST",headers:{Authorization:`Bearer ${key}`,"Content-Type":"application/json"},body:JSON.stringify({from,to:[to],reply_to:d.email,subject:`[Portfolio] ${d.requestType} — ${d.name}`,text:[`Nom : ${d.name}`,`Email : ${d.email}`,`Organisation : ${d.company||"Non renseignée"}`,`Budget : ${d.budget||"À définir"}`,`Échéance : ${d.deadline||"Non renseignée"}`,"",d.message].join("\n")})});if(!r.ok)return NextResponse.json({message:"L’envoi a échoué. Utilisez l’adresse email directe."},{status:502});return NextResponse.json({message:"Message envoyé."})}catch{return NextResponse.json({message:"Une erreur est survenue."},{status:500})}}
+import { NextResponse } from "next/server";
+
+const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+export async function POST(request: Request) {
+  try {
+    const body = await request.json() as Record<string, unknown>;
+    if (typeof body.website === "string" && body.website.length > 0) return NextResponse.json({ ok: true });
+
+    const name = typeof body.name === "string" ? body.name.trim() : "";
+    const email = typeof body.email === "string" ? body.email.trim() : "";
+    const message = typeof body.message === "string" ? body.message.trim() : "";
+    const consent = body.consent === "accepted";
+
+    if (name.length < 2 || !emailPattern.test(email) || message.length < 30 || !consent) {
+      return NextResponse.json({ ok: false, message: "Merci de vérifier les champs obligatoires." }, { status: 400 });
+    }
+
+    const apiKey = process.env.RESEND_API_KEY;
+    const to = process.env.CONTACT_TO_EMAIL;
+    const from = process.env.CONTACT_FROM_EMAIL ?? "Portfolio <onboarding@resend.dev>";
+    if (!apiKey || !to) {
+      return NextResponse.json({ ok: false, message: "Le formulaire n’est pas encore configuré. Utilisez l’adresse email indiquée sur la page." }, { status: 503 });
+    }
+
+    const safe = (value: unknown) => typeof value === "string" ? value.replace(/[<>]/g, "") : "Non renseigné";
+    const response = await fetch("https://api.resend.com/emails", {
+      method: "POST",
+      headers: { Authorization: `Bearer ${apiKey}`, "Content-Type": "application/json" },
+      body: JSON.stringify({
+        from,
+        to: [to],
+        reply_to: email,
+        subject: `Portfolio — ${safe(body.requestType)} — ${name}`,
+        html: `<h1>Nouvelle demande portfolio</h1><p><strong>Nom :</strong> ${safe(name)}</p><p><strong>Email :</strong> ${safe(email)}</p><p><strong>Organisation :</strong> ${safe(body.company)}</p><p><strong>Type :</strong> ${safe(body.requestType)}</p><p><strong>Budget :</strong> ${safe(body.budget)}</p><p><strong>Échéance :</strong> ${safe(body.deadline)}</p><hr><p>${safe(message).replace(/\n/g, "<br>")}</p>`,
+      }),
+    });
+
+    if (!response.ok) return NextResponse.json({ ok: false, message: "L’envoi n’a pas abouti. Utilisez l’adresse email indiquée sur la page." }, { status: 502 });
+    return NextResponse.json({ ok: true });
+  } catch {
+    return NextResponse.json({ ok: false, message: "Requête invalide." }, { status: 400 });
+  }
+}

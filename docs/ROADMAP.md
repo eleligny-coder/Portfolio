@@ -1,27 +1,34 @@
 # Roadmap
 
-## Phase 1 — MVP commercial
+## Phase 1 — Base complète
 
-- [x] Accueil premium responsive.
-- [x] Projets et cinq études de cas.
-- [x] Services, compétences, formations, méthode, à propos et contact.
-- [x] SEO technique de base.
-- [x] Documentation et API contact.
-- [ ] Ajouter les captures réelles.
-- [ ] Ajouter CV et fiche de compétences.
-- [ ] Valider les mentions légales et la confidentialité.
+- [x] Accueil commercial premium.
+- [x] 5 études de cas complètes.
+- [x] Slots de screenshots prêts.
+- [x] 6 services et pages détaillées.
+- [x] 16 axes de compétences.
+- [x] 10 formations et fiches programme.
+- [x] Méthode, à propos, société et ressources.
+- [x] CV en ligne imprimable.
+- [x] Contact qualifié et API Resend.
+- [x] Pages légales structurées.
+- [x] SEO technique, sitemap et robots.
+- [x] Documentation technique et éditoriale.
 
-## Phase 2 — Autorité
+## Phase 2 — Finalisation avant production
 
-- Ressources et articles.
-- Témoignages et preuves clients.
-- Études de cas enrichies avec métriques.
-- Page Livré d’un Clic SASU.
+- [ ] Ajouter les screenshots réels.
+- [ ] Compléter les informations juridiques.
+- [ ] Configurer Resend et le domaine.
+- [ ] Ajouter les URLs LinkedIn et Malt.
+- [ ] Réaliser la QA finale.
 
-## Phase 3 — Acquisition
+## Phase 3 — Autorité et acquisition
 
-- Analytics PostHog.
-- Sentry.
-- CRM de leads.
-- Prise de rendez-vous.
-- Version anglaise.
+- [ ] Publier les premiers articles.
+- [ ] Ajouter des témoignages vérifiés.
+- [ ] Ajouter des métriques projet justifiables.
+- [ ] Activer PostHog avec gouvernance cookies.
+- [ ] Activer Sentry.
+- [ ] Connecter un CRM de leads et la prise de rendez-vous.
+- [ ] Préparer la version anglaise.

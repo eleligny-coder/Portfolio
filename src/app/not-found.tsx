@@ -1,1 +1,2 @@
-import Link from "next/link";export default function NotFound(){return <section className="page-intro shell"><span className="eyebrow">404</span><h1>Page introuvable.</h1><p>Le contenu demandé n’existe pas ou a été déplacé.</p><Link className="btn" href="/">Retour à l’accueil</Link></section>}
+import Link from "next/link";
+export default function NotFound(){return <section className="page-intro shell"><span className="eyebrow">Erreur 404</span><h1>Cette page n’existe pas.</h1><p>Le lien est peut-être ancien ou la ressource n’est pas encore publiée.</p><div className="actions"><Link className="btn" href="/">Retour à l’accueil</Link><Link className="btn secondary" href="/projets">Voir les projets</Link></div></section>}

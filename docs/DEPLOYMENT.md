@@ -1,13 +1,25 @@
-# Déploiement Vercel
+# Déploiement
 
-1. Importer le dépôt GitHub dans Vercel.
-2. Définir `NEXT_PUBLIC_SITE_URL` avec le domaine final.
-3. Ajouter `NEXT_PUBLIC_CONTACT_EMAIL`.
-4. Vérifier un domaine expéditeur dans Resend.
-5. Ajouter `RESEND_API_KEY`, `CONTACT_FROM_EMAIL` et `CONTACT_TO_EMAIL`.
-6. Lancer le déploiement.
-7. Tester `/api/contact`, `robots.txt` et `sitemap.xml`.
+## Vercel
 
-## Domaine
+1. Importer le dépôt GitHub.
+2. Sélectionner Next.js.
+3. Configurer les variables de `.env.example`.
+4. Déployer un environnement Preview.
+5. Tester le formulaire.
+6. Connecter le domaine final.
+7. Déployer en Production.
 
-Configurer le domaine dans Vercel puis les DNS chez le registrar. Mettre à jour `NEXT_PUBLIC_SITE_URL` pour les URL canoniques.
+## Resend
+
+Variables obligatoires :
+
+- `RESEND_API_KEY`
+- `CONTACT_TO_EMAIL`
+- `CONTACT_FROM_EMAIL`
+
+Le domaine d’envoi doit être validé avant d’utiliser une adresse personnalisée.
+
+## Légal
+
+Compléter siège, capital, SIREN/RCS et informations d’hébergement avant indexation publique.

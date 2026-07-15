@@ -2,25 +2,21 @@
 
 ## Principe
 
-Le site est un portfolio commercial Next.js App Router. Les contenus restent séparés des composants afin de pouvoir évoluer vers un CMS sans réécrire les pages.
+Le contenu métier est séparé des composants :
 
-## Arborescence
+- `src/data/projects.ts` : études de cas et slots visuels.
+- `src/data/site.ts` : services, compétences, méthode et informations globales.
+- `src/data/trainings.ts` : programmes de formation.
+- `src/components` : composants réutilisables.
+- `src/app` : routes Next.js App Router.
 
-- `src/app` : routes, metadata, sitemap, robots et API contact.
-- `src/components` : layout, cartes projets et formulaire.
-- `src/data` : projets, services, compétences, formations et méthode.
-- `public/projects` : captures et vidéos produits à ajouter.
-- `public/documents` : CV et fiche de compétences.
+## Décisions
 
-## Choix techniques
+- Pas de CMS au MVP : le contenu versionné est plus simple et plus fiable.
+- Pas de dépendance d’animation : les mouvements sont en CSS et respectent la réduction de mouvement.
+- Pages dynamiques statiquement générées pour projets, services et formations.
+- Formulaire serveur sans SDK externe : appel direct à Resend.
 
-- Next.js 16 et React 19.
-- TypeScript strict.
-- CSS design system sans dépendance UI.
-- Pages projet générées statiquement.
-- API contact serveur avec Resend et honeypot anti-spam.
-- Respect de `prefers-reduced-motion`.
+## Évolution
 
-## Règle de crédibilité
-
-Les fonctionnalités opérationnelles, les statuts de maturité et les éléments de roadmap sont séparés dans chaque étude de cas.
+Un back-office Supabase pourra être ajouté pour les articles, leads, témoignages et médias lorsque le volume le justifiera.

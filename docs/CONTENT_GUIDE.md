@@ -1,20 +1,28 @@
 # Guide éditorial
 
-## Positionnement
+## Règle centrale
 
-1. Full Stack Product Builder.
-2. Consultant SaaS, IA et automatisation.
-3. Chef de projet digital et entrepreneur.
-4. Formateur.
+Toujours séparer :
 
-## Règles
+1. ce qui est fonctionnel ;
+2. ce qui est en stabilisation ;
+3. ce qui relève de la roadmap cible.
 
-- Écrire au présent uniquement pour les éléments fonctionnels.
-- Utiliser « en développement », « en stabilisation » ou « roadmap » quand nécessaire.
-- Ne pas afficher de chiffre non vérifiable.
-- Illustrer chaque projet avec des captures réelles avant lancement public.
-- Prioriser le problème, la solution, le rôle et les arbitrages avant la liste de technologies.
+## Projets
 
-## Ajout d’un projet
+Chaque projet doit contenir : problème, solution, workflow, fonctionnalités, stack, rôle, preuves, apprentissages, roadmap et visuels.
 
-Ajouter l’objet dans `src/data/projects.ts`. La liste, la page dynamique, le sitemap et les liens sont ensuite générés automatiquement.
+## Visuels
+
+Nom recommandé :
+
+`<ordre>-<projet>-<ecran>-<device>.webp`
+
+Exemple : `01-france-reliance-dashboard-client-desktop.webp`.
+
+Préparer deux formats :
+
+- desktop : 1600 × 1000 minimum ;
+- mobile : 750 × 1624 minimum.
+
+Ne jamais publier de données personnelles ou de clés API dans une capture.

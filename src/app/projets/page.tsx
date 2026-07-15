@@ -2,5 +2,5 @@ import type { Metadata } from "next";
 import { PageIntro } from "@/components/layout";
 import { ProjectCard } from "@/components/project-card";
 import { projects } from "@/data/projects";
-export const metadata: Metadata={title:"Projets"};
-export default function ProjectsPage(){return <><PageIntro eyebrow="Portfolio" title="Produits numériques conçus de bout en bout." text="SaaS métiers, marketplace, IA et automatisation : chaque étude de cas documente le problème, la solution, le rôle, la stack et le statut réel."/><section className="section"><div className="shell grid two">{projects.map(p=><ProjectCard key={p.slug} project={p}/>)}</div></section></>}
+export const metadata: Metadata = { title: "Projets", description: "Études de cas SaaS, IA, marketplaces et applications métiers." };
+export default function ProjectsPage(){return <><PageIntro eyebrow="Portfolio" title="Des produits, pas une galerie de logos." text="Chaque étude de cas présente le problème métier, la solution, les fonctionnalités, la stack, mon rôle, les preuves disponibles et la roadmap séparée du fonctionnel."/><section className="section"><div className="shell grid two">{projects.map(project=><ProjectCard key={project.slug} project={project}/>)}</div></section></>}

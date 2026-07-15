@@ -1,22 +1,22 @@
 # Portfolio — Élie Leligny
 
-Portfolio professionnel de **Élie Leligny**, Full Stack Product Builder, consultant SaaS / IA / automatisation et fondateur de Livré d’un Clic SASU.
+Portfolio professionnel hybride : études de cas, vitrine de consultant, catalogue de formations, CV en ligne et présentation de Livré d’un Clic SASU.
 
-## Objectifs
+## Positionnement
 
-- présenter les projets sous forme d’études de cas crédibles ;
-- générer des demandes de missions ;
-- présenter les services de conseil et développement ;
-- structurer une offre de formation ;
-- démontrer la capacité à relier métier, produit et technique.
+**Full Stack Product Builder — Consultant SaaS, IA & automatisation**
+
+Le site démontre la capacité à comprendre un métier, structurer un MVP, construire le produit, sécuriser les workflows et préparer son lancement.
 
 ## Stack
 
 - Next.js 16
 - React 19
 - TypeScript strict
-- CSS design system sur mesure
-- API Resend via HTTP
+- CSS natif maintenable
+- API Route contact
+- Resend pour l’envoi d’emails
+- Vercel pour le déploiement
 
 ## Installation
 
@@ -26,39 +26,35 @@ cp .env.example .env.local
 npm run dev
 ```
 
-## Contrôles
+## Vérification
 
 ```bash
 npm run check
 ```
 
-## Variables
+## Routes principales
 
-| Variable | Utilité |
-|---|---|
-| `NEXT_PUBLIC_SITE_URL` | URL canonique |
-| `NEXT_PUBLIC_CONTACT_EMAIL` | Email public |
-| `RESEND_API_KEY` | Clé Resend |
-| `CONTACT_FROM_EMAIL` | Expéditeur vérifié |
-| `CONTACT_TO_EMAIL` | Destinataire |
+- `/` — Accueil commercial
+- `/projets` et `/projets/[slug]` — 5 études de cas
+- `/services` et `/services/[slug]` — 6 offres détaillées
+- `/competences` — 16 axes de compétences
+- `/formations` et `/formations/[slug]` — 10 programmes premium
+- `/methode` — méthode en 7 étapes
+- `/a-propos` — parcours
+- `/societe` — Livré d’un Clic SASU
+- `/ressources` — bibliothèque éditoriale
+- `/cv` — CV imprimable / export PDF navigateur
+- `/contact` — formulaire qualifié
+- `/mentions-legales` et `/confidentialite`
 
-Sans Resend, le formulaire affiche l’adresse email directe.
+## Screenshots
 
-## Contenus
+Les captures ne sont pas bloquantes. Chaque étude de cas contient des composants `MediaPlaceholder` documentés. Remplacer progressivement les slots par les vrais visuels dans `public/projects/<slug>/`.
 
-- `src/data/projects.ts` : études de cas et statuts.
-- `src/data/site.ts` : navigation, services, compétences, formations et méthode.
-- `public/projects/` : captures réelles à intégrer.
-- `public/documents/` : CV et documents.
+## Avant production
 
-## Documentation
-
-- [Architecture](docs/ARCHITECTURE.md)
-- [Guide éditorial](docs/CONTENT_GUIDE.md)
-- [Déploiement](docs/DEPLOYMENT.md)
-- [Roadmap](docs/ROADMAP.md)
-- [QA](docs/QA_CHECKLIST.md)
-
-## Statut
-
-MVP commercial généré et prêt à être enrichi avec les médias réels puis déployé sur Vercel.
+1. Compléter les informations juridiques.
+2. Configurer le domaine et les variables d’environnement.
+3. Ajouter les visuels réels.
+4. Vérifier tous les statuts et chiffres affichés.
+5. Exécuter la checklist QA.
