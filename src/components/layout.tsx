@@ -5,19 +5,22 @@ import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { nav, site } from "@/data/site";
 
+const cvPdf = "/documents/elie-leligny-cv-product-builder-full-stack.pdf";
+
 export function Header() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
+  const isActive = (href: string) => pathname === href || (href !== "/" && pathname.startsWith(`${href}/`));
   return (
     <header className="header">
       <div className="shell header-inner">
-        <Link href="/" className="brand" onClick={() => setOpen(false)}>
+        <Link href="/" className="brand" onClick={() => setOpen(false)} aria-label="Accueil — Élie Leligny">
           <span>EL</span><div><strong>Élie Leligny</strong><small>Product Builder Full Stack</small></div>
         </Link>
-        <button className="menu-button" aria-expanded={open} aria-label="Ouvrir le menu" onClick={() => setOpen(!open)}>☰</button>
-        <nav className={open ? "nav open" : "nav"}>
+        <button className="menu-button" aria-expanded={open} aria-label={open ? "Fermer le menu" : "Ouvrir le menu"} onClick={() => setOpen(!open)}>{open ? "×" : "☰"}</button>
+        <nav className={open ? "nav open" : "nav"} aria-label="Navigation principale">
           {nav.map(([label, href]) => (
-            <Link key={href} href={href} className={pathname === href ? "active" : ""} onClick={() => setOpen(false)}>{label}</Link>
+            <Link key={href} href={href} className={isActive(href) ? "active" : ""} onClick={() => setOpen(false)}>{label}</Link>
           ))}
           <Link className="btn small" href="/contact" onClick={() => setOpen(false)}>Me contacter</Link>
         </nav>
@@ -31,7 +34,7 @@ export function Footer() {
     <footer className="footer">
       <div className="shell footer-grid">
         <div><strong>{site.name}</strong><p>{site.role} — {site.tagline}.</p><p className="remote-pill">{site.remote}</p></div>
-        <div><span>Explorer</span><Link href="/projets">Projets</Link><Link href="/services">Services</Link><Link href="/competences">Compétences</Link><Link href="/cv">CV</Link></div>
+        <div><span>Explorer</span><Link href="/projets">Projets</Link><Link href="/services">Services</Link><Link href="/competences">Compétences</Link><Link href="/cv">CV en ligne</Link><a href={cvPdf} download>CV PDF ↓</a></div>
         <div><span>Contact & preuves</span><a href={`mailto:${site.email}`}>{site.email}</a><a href={site.github} target="_blank" rel="noreferrer">GitHub ↗</a><a href={site.malt} target="_blank" rel="noreferrer">Malt ↗</a></div>
       </div>
       <div className="shell footer-bottom"><small>© {new Date().getFullYear()} Livré d’un Clic SASU</small><small>Portfolio public — code produit propriétaire conservé en privé.</small></div>
