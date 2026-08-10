@@ -1,3 +1,9 @@
+export type ProjectMedia = {
+  src: string;
+  alt: string;
+  label: string;
+};
+
 export type Project = {
   slug: string;
   name: string;
@@ -11,6 +17,9 @@ export type Project = {
   stack: string[];
   role: string[];
   roadmap: string[];
+  image?: string;
+  imageAlt?: string;
+  gallery?: ProjectMedia[];
 };
 
 export const projects: Project[] = [
@@ -27,6 +36,11 @@ export const projects: Project[] = [
     stack: ["Python", "FastAPI", "JavaScript", "MongoDB", "Supabase", "Stripe", "Railway", "Vercel"],
     role: ["Vision produit", "Architecture fonctionnelle", "Backend Python", "Data workflows", "IA", "Billing", "UX", "Documentation et QA"],
     roadmap: ["Finaliser la QA billing/crédits", "Connecter le runtime data commercial", "Renforcer le moteur agents", "Lancer la bêta privée"],
+    image: "/projects/parayon-home.webp",
+    imageAlt: "Interface d’accueil de Parayon, plateforme SaaS d’analyse sportive assistée par IA",
+    gallery: [
+      { src: "/projects/parayon-home.webp", alt: "Accueil Parayon", label: "Accueil produit" },
+    ],
   },
   {
     slug: "ratiopro",
@@ -41,6 +55,11 @@ export const projects: Project[] = [
     stack: ["Next.js", "TypeScript", "Supabase", "PostgreSQL", "PL/pgSQL", "Stripe", "OCR", "IA"],
     role: ["Conception produit", "Architecture Full Stack", "Modélisation métier", "UX cockpit", "Billing", "QA et commercialisation"],
     roadmap: ["Connecteurs POS", "Prévisions avancées", "Pilote terrain", "Onboarding commercial"],
+    image: "/projects/ratiopro-home.webp",
+    imageAlt: "Interface d’accueil de RatioPro, copilote de rentabilité pour restaurateurs",
+    gallery: [
+      { src: "/projects/ratiopro-home.webp", alt: "Accueil RatioPro", label: "Accueil produit" },
+    ],
   },
   {
     slug: "france-reliance",
@@ -55,6 +74,12 @@ export const projects: Project[] = [
     stack: ["React", "TypeScript", "TanStack", "Supabase", "PostgreSQL", "PL/pgSQL", "Stripe Connect", "Mapbox"],
     role: ["Vision produit", "Architecture fonctionnelle", "Développement Full Stack", "Modélisation des données", "Stripe", "Documentation", "QA et roadmap"],
     roadmap: ["Stabiliser auth et paiements", "Finaliser la carte", "Harmoniser les RLS", "Étendre progressivement le pôle ESS"],
+    image: "/projects/france-reliance-centre-entrepreneur.webp",
+    imageAlt: "Centre entrepreneur de France Reliance",
+    gallery: [
+      { src: "/projects/france-reliance-centre-entrepreneur.webp", alt: "Centre entrepreneur France Reliance", label: "Centre entrepreneur" },
+      { src: "/projects/france-reliance-solidarite.webp", alt: "Espace solidarité France Reliance", label: "Pôle solidarité" },
+    ],
   },
   {
     slug: "le-billot-pro",
@@ -69,6 +94,11 @@ export const projects: Project[] = [
     stack: ["JavaScript", "Python", "Supabase", "MongoDB", "Stripe Billing", "PWA", "Resend", "Vercel"],
     role: ["Analyse métier", "Architecture produit", "Développement", "Calculs métier", "UX", "Abonnements", "Documentation et roadmap"],
     roadmap: ["Tests terrain", "Exports enrichis", "Améliorations PWA", "Commercialisation pilote"],
+    image: "/projects/le-billot-pro-home.webp",
+    imageAlt: "Interface d’accueil du SaaS métier Le Billot Pro",
+    gallery: [
+      { src: "/projects/le-billot-pro-home.webp", alt: "Accueil Le Billot Pro", label: "Accueil produit" },
+    ],
   },
   {
     slug: "livre-d-un-clic-wordpress",
