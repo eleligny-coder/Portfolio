@@ -14,9 +14,8 @@ export const nav = [
   ["Projets", "/projets"],
   ["Services", "/services"],
   ["Compétences", "/competences"],
-  ["Formations", "/formations"],
-  ["Méthode", "/methode"],
   ["À propos", "/a-propos"],
+  ["CV", "/cv"],
 ] as const;
 
 export const services = [
