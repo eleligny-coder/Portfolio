@@ -12,14 +12,14 @@ export function Header() {
     <header className="header">
       <div className="shell header-inner">
         <Link href="/" className="brand" onClick={() => setOpen(false)}>
-          <span>EL</span><strong>Élie Leligny</strong>
+          <span>EL</span><div><strong>Élie Leligny</strong><small>Product Builder Full Stack</small></div>
         </Link>
         <button className="menu-button" aria-expanded={open} aria-label="Ouvrir le menu" onClick={() => setOpen(!open)}>☰</button>
         <nav className={open ? "nav open" : "nav"}>
           {nav.map(([label, href]) => (
             <Link key={href} href={href} className={pathname === href ? "active" : ""} onClick={() => setOpen(false)}>{label}</Link>
           ))}
-          <Link className="btn small" href="/contact" onClick={() => setOpen(false)}>Parler d’un projet</Link>
+          <Link className="btn small" href="/contact" onClick={() => setOpen(false)}>Me contacter</Link>
         </nav>
       </div>
     </header>
@@ -30,9 +30,9 @@ export function Footer() {
   return (
     <footer className="footer">
       <div className="shell footer-grid">
-        <div><strong>{site.name}</strong><p>{site.role} — {site.tagline}.</p><p>{site.remote}</p></div>
-        <div><span>Navigation</span><Link href="/projets">Projets</Link><Link href="/services">Services</Link><Link href="/contact">Contact</Link></div>
-        <div><span>Contact</span><a href={`mailto:${site.email}`}>{site.email}</a><a href={site.github} target="_blank" rel="noreferrer">GitHub ↗</a><a href={site.malt} target="_blank" rel="noreferrer">Malt ↗</a></div>
+        <div><strong>{site.name}</strong><p>{site.role} — {site.tagline}.</p><p className="remote-pill">{site.remote}</p></div>
+        <div><span>Explorer</span><Link href="/projets">Projets</Link><Link href="/services">Services</Link><Link href="/competences">Compétences</Link><Link href="/cv">CV</Link></div>
+        <div><span>Contact & preuves</span><a href={`mailto:${site.email}`}>{site.email}</a><a href={site.github} target="_blank" rel="noreferrer">GitHub ↗</a><a href={site.malt} target="_blank" rel="noreferrer">Malt ↗</a></div>
       </div>
       <div className="shell footer-bottom"><small>© {new Date().getFullYear()} Livré d’un Clic SASU</small><small>Portfolio public — code produit propriétaire conservé en privé.</small></div>
     </footer>
