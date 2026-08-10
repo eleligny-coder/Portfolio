@@ -1,24 +1,96 @@
-# Portfolio — Élie Leligny
+# Élie Leligny — Product Builder Full Stack
 
-Portfolio professionnel de **Élie Leligny**, Full Stack Product Builder, consultant SaaS / IA / automatisation et fondateur de Livré d’un Clic SASU.
+**SaaS · CRM sur mesure · IA · Automatisation · Stripe · Cloud**
 
-## Objectifs
+Portfolio professionnel d’Élie Leligny, Product Builder Full Stack et fondateur de Livré d’un Clic SASU.
 
-- présenter les projets sous forme d’études de cas crédibles ;
-- générer des demandes de missions ;
-- présenter les services de conseil et développement ;
-- structurer une offre de formation ;
-- démontrer la capacité à relier métier, produit et technique.
+Je transforme des besoins métier en produits numériques structurés : SaaS, applications métiers, CRM, marketplaces, dashboards, automatisations et systèmes IA.
 
-## Stack
+**Disponibilité : 100 % télétravail — France**
 
-- Next.js 16
-- React 19
-- TypeScript strict
-- CSS design system sur mesure
-- API Resend via HTTP
+## Ce que je construis
 
-## Installation
+- SaaS B2B et applications métiers sur mesure
+- CRM : leads, contacts, organisations, opportunités, pipelines, activités, propositions, contrats et KPI
+- Dashboards clients, administrateurs et partenaires
+- Agents IA, LLM, RAG, OCR et assistants métier
+- Automatisations n8n / Make, API REST et webhooks
+- Stripe Checkout, Billing et Connect
+- Architectures Supabase / PostgreSQL / MongoDB
+- Déploiement et exploitation sur Railway / Vercel / Cloudflare
+- MVP, roadmaps, spécifications, QA, documentation et coordination technique
+
+## Projets principaux
+
+### Parayon
+Plateforme SaaS d’analyse sportive assistée par IA.
+
+**Stack :** Python, FastAPI, JavaScript, MongoDB, Supabase, Stripe, Railway, Vercel.
+
+Travail réalisé autour du backend Python, des moteurs d’analyse, du billing, des crédits, des workflows data, de l’espace partenaire, du cockpit administrateur et de l’architecture IA.
+
+**Statut :** en développement — bêta privée en préparation.
+
+### RatioPro
+Copilote IA de rentabilité pour restaurateurs.
+
+**Stack :** Next.js, TypeScript, Supabase, PostgreSQL, PL/pgSQL, Stripe, OCR, IA.
+
+Gestion des ventes, achats, factures, recettes, stocks, pertes, marges, simulations et recommandations métier.
+
+**Statut :** finalisation commerciale.
+
+### France Reliance™
+Marketplace SaaS territoriale multi-rôles.
+
+**Stack :** React, TypeScript, TanStack, Supabase, PostgreSQL, PL/pgSQL, Stripe Connect, Mapbox.
+
+Missions, candidatures, workflows de validation, paiements sécurisés, KYC, dashboards, RLS et parcours multi-rôles.
+
+**Statut :** MVP en développement — stabilisation technique.
+
+### Le Billot Pro
+SaaS métier pour boucheries et ateliers de transformation.
+
+**Stack :** JavaScript, Python, Supabase, MongoDB, Stripe Billing, PWA, Resend, Vercel.
+
+Achats, carcasses, rendements, recettes, productions, stocks, pertes, marges, PDF et rapports IA.
+
+**Statut :** MVP métier / démonstration.
+
+## Stack principale
+
+### Full Stack
+TypeScript · JavaScript · Python · React · Next.js · FastAPI · HTML · CSS · Tailwind
+
+### Backend & data
+Supabase · PostgreSQL · PL/pgSQL · MongoDB · SQL · RLS · API REST · Webhooks
+
+### IA
+LLM · Agents IA · Multi-agents · RAG · OCR · OpenAI API · Assistants métier
+
+### SaaS & paiement
+Stripe Checkout · Stripe Billing · Stripe Connect · Abonnements · Commissions · KYC
+
+### Automatisation
+n8n · Make · AutomatorWP · API · Webhooks · Resend
+
+### Cloud & livraison
+Railway · Vercel · Cloudflare · GitHub · Sentry · Monitoring
+
+## Pourquoi les dépôts produits sont privés
+
+Les applications présentées ici sont des produits propriétaires. Leur code source reste donc privé.
+
+Ce portfolio public présente volontairement les **problèmes métier, architectures, fonctionnalités, stacks, rôles et statuts réels** sans exposer le code, les secrets, les données clients ou la propriété intellectuelle.
+
+L’activité issue des dépôts privés peut apparaître dans le graphique de contributions GitHub sans donner accès au contenu des dépôts.
+
+## Ce repository
+
+Ce dépôt contient le site portfolio public.
+
+**Stack :** Next.js 16 · React 19 · TypeScript strict · CSS design system sur mesure · Resend
 
 ```bash
 npm install
@@ -26,39 +98,16 @@ cp .env.example .env.local
 npm run dev
 ```
 
-## Contrôles
+Contrôles :
 
 ```bash
 npm run check
 ```
 
-## Variables
+## Contact
 
-| Variable | Utilité |
-|---|---|
-| `NEXT_PUBLIC_SITE_URL` | URL canonique |
-| `NEXT_PUBLIC_CONTACT_EMAIL` | Email public |
-| `RESEND_API_KEY` | Clé Resend |
-| `CONTACT_FROM_EMAIL` | Expéditeur vérifié |
-| `CONTACT_TO_EMAIL` | Destinataire |
+- GitHub : `eleligny-coder`
+- Malt : `malt.fr/profile/elieleligny`
+- Email : `e.leligny@gmail.com`
 
-Sans Resend, le formulaire affiche l’adresse email directe.
-
-## Contenus
-
-- `src/data/projects.ts` : études de cas et statuts.
-- `src/data/site.ts` : navigation, services, compétences, formations et méthode.
-- `public/projects/` : captures réelles à intégrer.
-- `public/documents/` : CV et documents.
-
-## Documentation
-
-- [Architecture](docs/ARCHITECTURE.md)
-- [Guide éditorial](docs/CONTENT_GUIDE.md)
-- [Déploiement](docs/DEPLOYMENT.md)
-- [Roadmap](docs/ROADMAP.md)
-- [QA](docs/QA_CHECKLIST.md)
-
-## Statut
-
-MVP commercial généré et prêt à être enrichi avec les médias réels puis déployé sur Vercel.
+Je recherche des **missions freelance et opportunités professionnelles 100 % à distance** autour du Full Stack, SaaS, Product Building, CRM, IA et automatisation.
