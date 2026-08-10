@@ -3,6 +3,7 @@ import "./globals.css";
 import "./premium.css";
 import "./case-study.css";
 import "./luxury.css";
+import "./polish.css";
 import { Footer, Header } from "@/components/layout";
 import { site } from "@/data/site";
 
