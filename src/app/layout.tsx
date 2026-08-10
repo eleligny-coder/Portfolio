@@ -5,9 +5,13 @@ import { site } from "@/data/site";
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
-  title: { default: "Élie Leligny — Full Stack Product Builder", template: "%s | Élie Leligny" },
-  description: "Conception de SaaS, applications métiers, systèmes IA et automatisations de bout en bout.",
-  openGraph: { title: "Élie Leligny — Full Stack Product Builder", description: "SaaS, IA, automatisation et produits métiers.", type: "website" },
+  title: { default: "Élie Leligny — Product Builder Full Stack", template: "%s | Élie Leligny" },
+  description: "Product Builder Full Stack spécialisé en SaaS, CRM sur mesure, IA, automatisation, Stripe et applications métiers. Missions 100 % à distance.",
+  openGraph: {
+    title: "Élie Leligny — Product Builder Full Stack",
+    description: "SaaS, CRM sur mesure, IA, automatisation et produits métiers — de l’analyse au déploiement.",
+    type: "website",
+  },
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
