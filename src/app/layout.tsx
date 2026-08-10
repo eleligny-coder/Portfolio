@@ -5,22 +5,32 @@ import "./case-study.css";
 import "./luxury.css";
 import "./polish.css";
 import "./about-media.css";
+import "./gallery.css";
 import { Footer, Header } from "@/components/layout";
 import { site } from "@/data/site";
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
+  applicationName: "Portfolio — Élie Leligny",
   title: { default: "Élie Leligny — Product Builder Full Stack", template: "%s | Élie Leligny" },
   description: "Product Builder Full Stack spécialisé en SaaS, CRM sur mesure, IA, automatisation, Stripe et applications métiers. Missions 100 % à distance.",
   keywords: ["Product Builder", "Développeur Full Stack", "SaaS", "CRM sur mesure", "Intelligence artificielle", "Automatisation", "Python", "TypeScript", "React", "FastAPI", "Supabase", "PostgreSQL", "Stripe", "Railway"],
   authors: [{ name: site.name }],
   creator: site.name,
+  alternates: { canonical: "/" },
   robots: { index: true, follow: true },
   openGraph: {
     title: "Élie Leligny — Product Builder Full Stack",
     description: "SaaS, CRM sur mesure, IA, automatisation et produits métiers — de l’analyse au déploiement.",
     type: "website",
     locale: "fr_FR",
+    siteName: "Portfolio — Élie Leligny",
+    url: "/",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Élie Leligny — Product Builder Full Stack",
+    description: "SaaS, CRM sur mesure, IA, automatisation et produits métiers — de l’analyse au déploiement.",
   },
 };
 
