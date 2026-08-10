@@ -29,6 +29,7 @@ export default async function ProjectPage({params}:{params:Promise<{slug:string}
         <p className="summary">{p.summary}</p>
         <div className="status">Statut : {p.status}</div>
         <div className="tags hero-tags">{p.stack.slice(0,6).map(x=><span key={x}>{x}</span>)}</div>
+        {p.languages && <div className="language-proof">{p.languages.map(x=><strong key={x}>{x}</strong>)}</div>}
       </div>
       {p.image && <div className="case-browser">
         <div className="browser-bar"><span/><span/><span/><small>{p.name}</small></div>
@@ -45,6 +46,15 @@ export default async function ProjectPage({params}:{params:Promise<{slug:string}
       <div><span className="eyebrow">Fonctionnel</span><h2>Ce que le produit démontre</h2><ul className="list">{p.features.map(x=><li key={x}>{x}</li>)}</ul></div>
       <div><span className="eyebrow">Exécution</span><h2>Stack & rôle</h2><div className="tags large-tags">{p.stack.map(x=><span key={x}>{x}</span>)}</div><h3>Mon rôle</h3><ul className="list">{p.role.map(x=><li key={x}>{x}</li>)}</ul></div>
     </div></section>
+
+    {p.architecture && p.architecture.length>0 && <section className="section architecture-section"><div className="shell">
+      <div className="section-title"><span className="eyebrow">Architecture</span><h2>Comment les briques s’assemblent.</h2><p>Vue simplifiée de l’architecture pour montrer le flux produit sans exposer le code propriétaire ni les secrets d’infrastructure.</p></div>
+      <div className="architecture-flow">{p.architecture.map((layer,index)=><article className="architecture-node" key={layer.label}>
+        <span className="architecture-index">{String(index+1).padStart(2,"0")}</span>
+        <h3>{layer.label}</h3>
+        <div>{layer.items.map(item=><span key={item}>{item}</span>)}</div>
+      </article>)}</div>
+    </div></section>}
 
     {p.gallery && p.gallery.length>0 && <section className="section alt"><div className="shell">
       <div className="section-title"><span className="eyebrow">Produit réel</span><h2>Captures de l’application</h2><p>Des écrans réels du produit. Le code source des produits reste privé et propriétaire.</p></div>
