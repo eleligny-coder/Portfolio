@@ -4,6 +4,11 @@ export type ProjectMedia = {
   label: string;
 };
 
+export type ArchitectureLayer = {
+  label: string;
+  items: string[];
+};
+
 export type Project = {
   slug: string;
   name: string;
@@ -20,6 +25,8 @@ export type Project = {
   image?: string;
   imageAlt?: string;
   gallery?: ProjectMedia[];
+  languages?: string[];
+  architecture?: ArchitectureLayer[];
 };
 
 export const projects: Project[] = [
@@ -41,6 +48,14 @@ export const projects: Project[] = [
     gallery: [
       { src: "/projects/parayon-home.webp", alt: "Accueil Parayon", label: "Accueil produit" },
     ],
+    languages: ["Python 82,8 %", "JavaScript 16,7 %", "Autres 0,5 %"],
+    architecture: [
+      { label: "Interface", items: ["Application web JavaScript", "Dashboard", "Scanner / analyses"] },
+      { label: "API & métier", items: ["Python", "FastAPI", "Services métier", "Billing / crédits"] },
+      { label: "Data & IA", items: ["APIs sportives", "Normalisation", "Moteurs d’analyse", "Agents IA"] },
+      { label: "Persistance", items: ["MongoDB", "Supabase", "Historique", "Configuration"] },
+      { label: "Cloud", items: ["Railway", "Vercel", "Stripe", "Resend"] },
+    ],
   },
   {
     slug: "ratiopro",
@@ -59,6 +74,14 @@ export const projects: Project[] = [
     imageAlt: "Interface d’accueil de RatioPro, copilote de rentabilité pour restaurateurs",
     gallery: [
       { src: "/projects/ratiopro-home.webp", alt: "Accueil RatioPro", label: "Accueil produit" },
+    ],
+    languages: ["TypeScript 87,4 %", "PL/pgSQL 12,3 %"],
+    architecture: [
+      { label: "Produit", items: ["Next.js", "React", "Cockpit métier", "Parcours restaurant"] },
+      { label: "Backend", items: ["Supabase", "Auth", "RLS", "Edge Functions"] },
+      { label: "Données", items: ["PostgreSQL", "PL/pgSQL", "KPI", "Calculs métier"] },
+      { label: "Entrées", items: ["Import POS", "CSV", "OCR factures", "Fournisseurs"] },
+      { label: "Monétisation", items: ["Stripe", "Plans", "Crédits", "Quotas"] },
     ],
   },
   {
@@ -80,6 +103,14 @@ export const projects: Project[] = [
       { src: "/projects/france-reliance-centre-entrepreneur.webp", alt: "Centre entrepreneur France Reliance", label: "Centre entrepreneur" },
       { src: "/projects/france-reliance-solidarite.webp", alt: "Espace solidarité France Reliance", label: "Pôle solidarité" },
     ],
+    languages: ["TypeScript 92,4 %", "PL/pgSQL 7,3 %"],
+    architecture: [
+      { label: "Frontend", items: ["React", "TypeScript", "TanStack", "Dashboards multi-rôles"] },
+      { label: "Backend", items: ["Supabase", "PostgreSQL", "PL/pgSQL", "RLS"] },
+      { label: "Workflow mission", items: ["Candidatures", "Validation", "Historique", "Documents"] },
+      { label: "Paiement", items: ["Stripe Connect", "KYC", "Webhooks", "Solde Sécurisé Stripe™"] },
+      { label: "Services", items: ["Mapbox", "Notifications", "Vercel", "Cloudflare"] },
+    ],
   },
   {
     slug: "le-billot-pro",
@@ -99,6 +130,14 @@ export const projects: Project[] = [
     gallery: [
       { src: "/projects/le-billot-pro-home.webp", alt: "Accueil Le Billot Pro", label: "Accueil produit" },
     ],
+    languages: ["JavaScript 93,4 %", "Python 6,3 %", "Autres 0,3 %"],
+    architecture: [
+      { label: "Interface métier", items: ["JavaScript", "Dashboard", "Achats", "Stocks", "Productions"] },
+      { label: "Données", items: ["Supabase", "MongoDB", "Historique", "Multi-business"] },
+      { label: "Calcul métier", items: ["Rendements", "Coût matière", "Marges", "Pertes"] },
+      { label: "Services", items: ["Python", "Rapports", "IA Insights", "Exports PDF"] },
+      { label: "SaaS", items: ["Stripe Billing", "PWA", "Resend", "Vercel"] },
+    ],
   },
   {
     slug: "livre-d-un-clic-wordpress",
@@ -113,6 +152,13 @@ export const projects: Project[] = [
     stack: ["WordPress", "Elementor", "Forminator", "AutomatorWP", "WP User Frontend", "Search & Filter Pro", "Stripe"],
     role: ["Cadrage", "Configuration", "Spécifications", "Coordination développeurs", "Recette", "Suivi des bugs", "Arbitrage de refonte"],
     roadmap: ["Projet clôturé", "Enseignements transférés vers France Reliance"],
+    architecture: [
+      { label: "CMS & UX", items: ["WordPress", "Elementor", "Pages publiques", "Dashboards"] },
+      { label: "Formulaires", items: ["Forminator", "WP User Frontend", "Profils", "Missions"] },
+      { label: "Workflows", items: ["AutomatorWP", "Statuts", "Emails", "Actions automatiques"] },
+      { label: "Recherche", items: ["Search & Filter Pro", "Catégories", "Localisation", "Missions"] },
+      { label: "Paiement", items: ["Stripe", "Connect en expérimentation", "PDF", "Validation"] },
+    ],
   },
 ];
 
