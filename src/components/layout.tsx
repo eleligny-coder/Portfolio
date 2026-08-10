@@ -30,11 +30,11 @@ export function Footer() {
   return (
     <footer className="footer">
       <div className="shell footer-grid">
-        <div><strong>{site.name}</strong><p>Full Stack Product Builder — SaaS, IA, automatisation et produits métiers.</p></div>
+        <div><strong>{site.name}</strong><p>{site.role} — {site.tagline}.</p><p>{site.remote}</p></div>
         <div><span>Navigation</span><Link href="/projets">Projets</Link><Link href="/services">Services</Link><Link href="/contact">Contact</Link></div>
-        <div><span>Contact</span><a href={`mailto:${site.email}`}>{site.email}</a><a href={site.github} target="_blank" rel="noreferrer">GitHub ↗</a></div>
+        <div><span>Contact</span><a href={`mailto:${site.email}`}>{site.email}</a><a href={site.github} target="_blank" rel="noreferrer">GitHub ↗</a><a href={site.malt} target="_blank" rel="noreferrer">Malt ↗</a></div>
       </div>
-      <div className="shell footer-bottom"><small>© {new Date().getFullYear()} Livré d’un Clic SASU</small><small>Portfolio conçu comme une preuve produit.</small></div>
+      <div className="shell footer-bottom"><small>© {new Date().getFullYear()} Livré d’un Clic SASU</small><small>Portfolio public — code produit propriétaire conservé en privé.</small></div>
     </footer>
   );
 }
