@@ -2,6 +2,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
+import { ProjectGallery } from "@/components/project-gallery";
 import { projects, getProject } from "@/data/projects";
 
 export function generateStaticParams(){return projects.map(p=>({slug:p.slug}))}
@@ -27,15 +28,19 @@ export default async function ProjectPage({params}:{params:Promise<{slug:string}
         <span className="eyebrow">{p.eyebrow}</span>
         <h1>{p.name}</h1>
         <p className="summary">{p.summary}</p>
-        <div className="status">Statut : {p.status}</div>
+        <div className="project-meta-row"><div className="status">Statut : {p.status}</div><span className="private-code-badge">Code propriétaire privé</span></div>
         <div className="tags hero-tags">{p.stack.slice(0,6).map(x=><span key={x}>{x}</span>)}</div>
         {p.languages && <div className="language-proof">{p.languages.map(x=><strong key={x}>{x}</strong>)}</div>}
       </div>
-      {p.image && <div className="case-browser">
+      {p.image && <div className="case-browser project-cover">
         <div className="browser-bar"><span/><span/><span/><small>{p.name}</small></div>
         <img src={p.image} alt={p.imageAlt ?? p.name}/>
       </div>}
     </section>
+
+    <section className="project-proof-strip"><div className="shell">
+      <span>Étude de cas réelle</span><span>Architecture expliquée</span><span>Captures produit</span><span>Roadmap séparée du construit</span>
+    </div></section>
 
     <section className="section alt"><div className="shell detail-grid">
       <article className="card"><span className="eyebrow">Le problème</span><h2>Pourquoi ce produit existe</h2><p>{p.problem}</p></article>
@@ -57,17 +62,15 @@ export default async function ProjectPage({params}:{params:Promise<{slug:string}
     </div></section>}
 
     {p.gallery && p.gallery.length>0 && <section className="section alt"><div className="shell">
-      <div className="section-title"><span className="eyebrow">Produit réel</span><h2>Captures de l’application</h2><p>Des écrans réels du produit. Le code source des produits reste privé et propriétaire.</p></div>
-      <div className={`case-gallery ${p.gallery.length===1?"single":""}`}>
-        {p.gallery.map(media=><figure key={media.src} className="case-shot"><div className="case-browser compact"><div className="browser-bar"><span/><span/><span/><small>{media.label}</small></div><img src={media.src} alt={media.alt} loading="lazy"/></div><figcaption>{media.label}</figcaption></figure>)}
-      </div>
+      <div className="section-title"><span className="eyebrow">Produit réel</span><h2>Captures de l’application</h2><p>Cliquez sur une capture pour l’ouvrir en grand. Les écrans sont réels ; le code source et les secrets d’infrastructure restent privés.</p></div>
+      <ProjectGallery media={p.gallery} projectName={p.name}/>
     </div></section>}
 
     <section className="section"><div className="shell">
       <div className="section-title"><span className="eyebrow">Roadmap</span><h2>Ce qui vient ensuite</h2><p>La roadmap est volontairement séparée de ce qui est déjà construit afin de garder une présentation crédible.</p></div>
-      <div className="grid two">{p.roadmap.map((x,i)=><article className="card" key={x}><span className="eyebrow">Étape {i+1}</span><h3>{x}</h3></article>)}</div>
+      <div className="grid two">{p.roadmap.map((x,i)=><article className="card roadmap-card" key={x}><span className="eyebrow">Étape {i+1}</span><h3>{x}</h3></article>)}</div>
     </div></section>
 
-    <section className="section"><div className="shell cta"><div><span className="eyebrow">Mission ou recrutement 100 % remote</span><h2>Un besoin métier comparable ?</h2></div><Link className="btn" href="/contact">Échanger sur votre projet</Link></div></section>
+    <section className="section"><div className="shell cta premium-cta"><div><span className="eyebrow">Mission ou recrutement 100 % remote</span><h2>Un besoin métier comparable ?</h2><p>Je peux cadrer, reprendre ou construire un produit complexe de bout en bout, avec une vision produit et technique.</p></div><div className="actions"><Link className="btn" href="/contact">Échanger sur votre projet</Link><Link className="btn secondary" href="/cv">Voir mon CV</Link></div></div></section>
   </>;
 }
