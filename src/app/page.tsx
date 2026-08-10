@@ -6,6 +6,7 @@ import { method, services, site } from "@/data/site";
 
 const stack = ["Python", "FastAPI", "TypeScript", "React", "Next.js", "Supabase", "PostgreSQL", "Stripe", "Railway", "n8n"];
 const capabilities = ["Product strategy", "Architecture", "Full Stack", "Data", "IA / LLM", "CRM", "Stripe", "Automation", "QA", "Deploy"];
+const cvPdf = "/documents/elie-leligny-cv-product-builder-full-stack.pdf";
 
 export default function Home() {
   const [featured, ...rest] = projects.slice(0, 4);
@@ -20,7 +21,7 @@ export default function Home() {
           <span className="eyebrow">Product Builder Full Stack</span>
           <h1>Je transforme des besoins métier en <em>produits numériques qui tiennent la route.</em></h1>
           <p>SaaS, CRM sur mesure, applications métiers, IA et automatisations — de la vision produit au code, aux données, au paiement et au déploiement.</p>
-          <div className="actions"><Link className="btn" href="/projets">Voir mes réalisations</Link><Link className="btn secondary" href="/cv">Voir mon CV</Link><Link className="btn ghost" href="/contact">Me contacter</Link></div>
+          <div className="actions"><Link className="btn" href="/projets">Voir mes réalisations</Link><a className="btn secondary cv-download" href={cvPdf} download>Télécharger mon CV</a><Link className="btn ghost" href="/contact">Me contacter</Link></div>
           <div className="proofs premium-proofs"><div><strong>5+</strong><span>années de pratique</span></div><div><strong>4</strong><span>produits SaaS majeurs</span></div><div><strong>100+</strong><span>agents IA conçus / orchestrés</span></div><div><strong>100 %</strong><span>télétravail</span></div></div>
         </div>
 
@@ -53,12 +54,12 @@ export default function Home() {
       <div className="actions"><Link className="btn secondary" href="/projets">Voir tous les projets</Link></div>
     </div></section>
 
-    <section className="section github-proof"><div className="shell github-panel"><div><span className="eyebrow">GitHub & code propriétaire</span><h2>Activité visible. Produits privés.</h2><p>Mes dépôts produits restent privés afin de protéger le code et les architectures propriétaires. Le portfolio expose les fonctionnalités, choix techniques, captures et études de cas nécessaires pour évaluer mon travail.</p><div className="actions"><a className="btn secondary" href={site.github} target="_blank" rel="noreferrer">Voir mon GitHub ↗</a><Link className="btn ghost" href="/cv">Consulter mon CV</Link></div></div><div className="github-terminal" aria-hidden="true"><div><span>●</span><span>●</span><span>●</span></div><code>$ product-builder --status</code><strong>Python / TypeScript / SaaS / CRM / IA</strong><code>$ visibility</code><strong>Contributions publiques + privées</strong><code>$ source-code</code><strong>Private / propriétaire</strong></div></div></section>
+    <section className="section github-proof"><div className="shell github-panel"><div><span className="eyebrow">GitHub & code propriétaire</span><h2>Activité visible. Produits privés.</h2><p>Mes dépôts produits restent privés afin de protéger le code et les architectures propriétaires. Le portfolio expose les fonctionnalités, choix techniques, captures et études de cas nécessaires pour évaluer mon travail.</p><div className="actions"><a className="btn secondary" href={site.github} target="_blank" rel="noreferrer">Voir mon GitHub ↗</a><Link className="btn ghost" href="/cv">Consulter le CV en ligne</Link></div></div><div className="github-terminal" aria-hidden="true"><div><span>●</span><span>●</span><span>●</span></div><code>$ product-builder --status</code><strong>Python / TypeScript / SaaS / CRM / IA</strong><code>$ visibility</code><strong>Contributions publiques + privées</strong><code>$ source-code</code><strong>Private / propriétaire</strong></div></div></section>
 
     <section className="section alt"><div className="shell"><SectionTitle eyebrow="Services" title="Construire ou débloquer un produit numérique."/><div className="grid two">{services.map((s,i)=><article className="card service-card" key={s.title}><span className="service-index">0{i+1}</span><div><span className="eyebrow">Expertise</span><h3>{s.title}</h3><p>{s.text}</p></div></article>)}</div></div></section>
 
     <section className="section"><div className="shell"><SectionTitle eyebrow="Méthode" title="Un chemin clair du besoin au déploiement."/><div className="premium-method">{method.slice(0,5).map(([n,t,d])=><div className="premium-method-step" key={n}><b>{n}</b><div><h3>{t}</h3><p>{d}</p></div><span>→</span></div>)}</div></div></section>
 
-    <section className="section"><div className="shell cta premium-cta"><div><span className="eyebrow">Mission ou recrutement 100 % remote</span><h2>Besoin d’un profil capable de relier produit, business et technique ?</h2><p>Je peux intervenir sur un produit existant, cadrer un MVP ou construire une application métier de bout en bout.</p></div><div className="actions"><Link className="btn" href="/contact">Me contacter</Link><Link className="btn secondary" href="/cv">Voir le CV</Link></div></div></section>
+    <section className="section"><div className="shell cta premium-cta"><div><span className="eyebrow">Mission ou recrutement 100 % remote</span><h2>Besoin d’un profil capable de relier produit, business et technique ?</h2><p>Je peux intervenir sur un produit existant, cadrer un MVP ou construire une application métier de bout en bout.</p></div><div className="actions"><Link className="btn" href="/contact">Me contacter</Link><a className="btn secondary cv-download" href={cvPdf} download>Télécharger le CV</a></div></div></section>
   </>;
 }
