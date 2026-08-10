@@ -8,6 +8,14 @@ Je transforme des besoins métier en produits numériques structurés : SaaS, ap
 
 **Disponibilité : 100 % télétravail — France**
 
+## Ce que montre le portfolio
+
+- de vraies captures des produits présentés ;
+- des études de cas avec problème, solution, stack, rôle et statut réel ;
+- un CV en ligne imprimable / enregistrable en PDF depuis `/cv` ;
+- une présentation claire de la confidentialité des dépôts produits privés ;
+- une navigation orientée recruteurs et clients : Projets, Services, Compétences, À propos, CV et Contact.
+
 ## Ce que je construis
 
 - SaaS B2B et applications métiers sur mesure
@@ -82,7 +90,7 @@ Railway · Vercel · Cloudflare · GitHub · Sentry · Monitoring
 
 Les applications présentées ici sont des produits propriétaires. Leur code source reste donc privé.
 
-Ce portfolio public présente volontairement les **problèmes métier, architectures, fonctionnalités, stacks, rôles et statuts réels** sans exposer le code, les secrets, les données clients ou la propriété intellectuelle.
+Ce portfolio public présente volontairement les **problèmes métier, architectures, fonctionnalités, stacks, rôles, captures et statuts réels** sans exposer le code, les secrets, les données clients ou la propriété intellectuelle.
 
 L’activité issue des dépôts privés peut apparaître dans le graphique de contributions GitHub sans donner accès au contenu des dépôts.
 
@@ -103,6 +111,8 @@ Contrôles :
 ```bash
 npm run check
 ```
+
+Un workflow GitHub Actions exécute également lint, typecheck et build sur `main` et les pull requests.
 
 ## Contact
 
