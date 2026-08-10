@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import "./premium.css";
+import "./case-study.css";
 import { Footer, Header } from "@/components/layout";
 import { site } from "@/data/site";
 
