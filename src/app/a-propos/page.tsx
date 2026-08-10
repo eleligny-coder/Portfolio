@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { PageIntro, SectionTitle } from "@/components/layout";
 
@@ -23,6 +24,20 @@ export default function Page() {
     <section className="section alt"><div className="shell">
       <SectionTitle eyebrow="Parcours" title="Une progression construite par les produits." text="Chaque étape a ajouté une couche : métier, workflow, architecture, code, données, monétisation et exploitation."/>
       <div className="journey">{journey.map(([n,title,text])=><article key={n}><span>{n}</span><div><h3>{title}</h3><p>{text}</p></div></article>)}</div>
+    </div></section>
+
+    <section className="section agency-showcase-section"><div className="shell agency-showcase">
+      <div className="agency-showcase-copy">
+        <span className="eyebrow">Leligny Agency</span>
+        <h2>Le versant conseil de mon profil.</h2>
+        <p>J’accompagne entrepreneurs et organisations sur des besoins concrets : CRM sur mesure, automatisation, outils internes, IA, sites professionnels et structuration de workflows numériques.</p>
+        <div className="agency-proof-list"><span>CRM & workflows</span><span>IA & automatisation</span><span>Product building</span><span>100 % remote</span></div>
+        <div className="actions"><Link className="btn secondary" href="/services">Voir mes services</Link><Link className="btn ghost" href="/contact">Échanger</Link></div>
+      </div>
+      <div className="case-browser agency-browser">
+        <div className="browser-bar"><span/><span/><span/><small>Leligny Agency</small></div>
+        <Image src="/projects/leligny-agency-home.webp" alt="Site de présentation Leligny Agency" width={1600} height={900} sizes="(max-width: 900px) 100vw, 50vw" />
+      </div>
     </div></section>
 
     <section className="section"><div className="shell grid two">
