@@ -125,9 +125,10 @@ export const projects: Project[] = [
     stack: ["JavaScript", "Python", "Supabase", "MongoDB", "Stripe Billing", "PWA", "Resend", "Vercel"],
     role: ["Analyse métier", "Architecture produit", "Développement", "Calculs métier", "UX", "Abonnements", "Documentation et roadmap"],
     roadmap: ["Tests terrain", "Exports enrichis", "Améliorations PWA", "Commercialisation pilote"],
-    image: "/projects/le-billot-pro-home.webp",
-    imageAlt: "Interface d’accueil du SaaS métier Le Billot Pro",
+    image: "/projects/le-billot-pro-dashboard-ia.webp",
+    imageAlt: "Cockpit métier de Le Billot Pro avec synthèse et assistance IA",
     gallery: [
+      { src: "/projects/le-billot-pro-dashboard-ia.webp", alt: "Cockpit métier et Billot IA", label: "Cockpit métier & Billot IA" },
       { src: "/projects/le-billot-pro-home.webp", alt: "Accueil Le Billot Pro", label: "Accueil produit" },
     ],
     languages: ["JavaScript 93,4 %", "Python 6,3 %", "Autres 0,3 %"],
@@ -152,6 +153,12 @@ export const projects: Project[] = [
     stack: ["WordPress", "Elementor", "Forminator", "AutomatorWP", "WP User Frontend", "Search & Filter Pro", "Stripe"],
     role: ["Cadrage", "Configuration", "Spécifications", "Coordination développeurs", "Recette", "Suivi des bugs", "Arbitrage de refonte"],
     roadmap: ["Projet clôturé", "Enseignements transférés vers France Reliance"],
+    image: "/projects/livre-d-un-clic-wordpress-map-missions.webp",
+    imageAlt: "Recherche de missions et carte de la marketplace Livré d’un Clic sous WordPress",
+    gallery: [
+      { src: "/projects/livre-d-un-clic-wordpress-map-missions.webp", alt: "Recherche de missions avec carte et filtres", label: "Recherche de missions & carte" },
+      { src: "/projects/livre-d-un-clic-wordpress-about.webp", alt: "Interface publique historique de Livré d’un Clic", label: "Interface historique" },
+    ],
     architecture: [
       { label: "CMS & UX", items: ["WordPress", "Elementor", "Pages publiques", "Dashboards"] },
       { label: "Formulaires", items: ["Forminator", "WP User Frontend", "Profils", "Missions"] },
