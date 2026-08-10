@@ -26,7 +26,7 @@ const experiences = [
     period: "Projet fondateur",
     title: "Product Owner & Chef de projet digital",
     company: "Livré d’un Clic — version WordPress",
-    text: "Marketplace de services avec profils, missions, candidatures, estimation d’heures, Stripe, PDF et dashboards. Rédaction des spécifications, coordination de développeurs, tests, recette et suivi des corrections.",
+    text: "Première version de la marketplace : profils, missions, candidatures, Stripe, PDF et dashboards. Spécifications, coordination de développeurs, recette et suivi des corrections avant abandon de WordPress et reconstruction sur une stack applicative moderne.",
   },
   {
     period: "11 mois",
@@ -46,7 +46,7 @@ export default function CvPage() {
         <p className="summary">SaaS • CRM sur mesure • IA • Automatisation</p>
         <div className="cv-contact"><a href={`mailto:${site.email}`}>{site.email}</a><span>France</span><a href={site.github} target="_blank" rel="noreferrer">GitHub ↗</a><a href={site.malt} target="_blank" rel="noreferrer">Malt ↗</a></div>
       </div>
-      <div className="cv-actions no-print"><PrintButton/><Link className="btn" href="/contact">Me contacter</Link></div>
+      <div className="cv-actions no-print"><a className="btn cv-download" href="/documents/elie-leligny-cv-product-builder-full-stack.pdf" download>Télécharger le PDF</a><PrintButton/><Link className="btn secondary" href="/contact">Me contacter</Link></div>
     </section>
 
     <section className="section compact"><div className="shell cv-section">
@@ -72,7 +72,7 @@ export default function CvPage() {
 
     <section className="section compact"><div className="shell grid two cv-section">
       <div><span className="eyebrow">Formation</span><h2>Parcours.</h2><ul className="list"><li>Titre professionnel Conseiller de Vente — CFA FORMETIK, Nancy</li><li>Autoformation continue : développement Full Stack, SaaS, IA, automatisation et Product Management</li></ul></div>
-      <div><span className="eyebrow">Langues & disponibilité</span><h2>Remote-first.</h2><ul className="list"><li>Français — langue maternelle</li><li>Anglais — professionnel / conversationnel</li><li>Recherche : missions ou postes 100 % télétravail</li></ul></div>
+      <div><span className="eyebrow">Disponibilité</span><h2>Remote-first.</h2><ul className="list"><li>Français — langue maternelle</li><li>France — 100 % télétravail</li><li>Missions freelance ou opportunités salariées à distance</li></ul></div>
     </div></section>
   </div>;
 }
