@@ -28,12 +28,15 @@ export function CinematicEffects() {
 
   useEffect(() => {
     const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (!reduceMotion && !sessionStorage.getItem(INTRO_KEY)) {
-      setIntro(true);
-      sessionStorage.setItem(INTRO_KEY, "1");
-      const timer = window.setTimeout(() => setIntro(false), 1450);
-      return () => window.clearTimeout(timer);
-    }
+    if (reduceMotion || sessionStorage.getItem(INTRO_KEY)) return;
+
+    sessionStorage.setItem(INTRO_KEY, "1");
+    const frame = window.requestAnimationFrame(() => setIntro(true));
+    const timer = window.setTimeout(() => setIntro(false), 1450);
+    return () => {
+      window.cancelAnimationFrame(frame);
+      window.clearTimeout(timer);
+    };
   }, []);
 
   useEffect(() => {
