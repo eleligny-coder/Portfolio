@@ -13,8 +13,8 @@ export default function Image() {
         <span>ÉLIE LELIGNY</span><span>PORTFOLIO / 2026</span>
       </div>
       <div style={{display:"flex",flexDirection:"column",gap:18,maxWidth:900}}>
-        <div style={{fontSize:82,lineHeight:.95,letterSpacing:-4,fontWeight:800}}>Product Builder<br/>Full Stack</div>
-        <div style={{fontSize:28,color:"#d8c7a2"}}>SaaS · CRM · applications métiers · automatisation</div>
+        <div style={{display:"flex",flexDirection:"column",fontSize:82,lineHeight:.95,letterSpacing:-4,fontWeight:800}}><span>Product Builder</span><span>Full Stack</span></div>
+        <div style={{display:"flex",fontSize:28,color:"#d8c7a2"}}>SaaS · CRM · applications métiers · automatisation</div>
       </div>
       <div style={{display:"flex",gap:28,fontSize:20,color:"#a9a59d"}}>
         <span>Strategy → Architecture → Build → Ship</span><span>100 % remote</span>
