@@ -1,4 +1,4 @@
-/* eslint-disable @next/next/no-img-element */
+import Image from "next/image";
 import Link from "next/link";
 import type { Project } from "@/data/projects";
 
@@ -7,7 +7,14 @@ export function ProjectCard({ project, featured = false }: { project: Project; f
     <article className={`project-card accent-${project.accent} ${featured ? "project-card-featured" : ""}`}>
       {project.image ? (
         <Link href={`/projets/${project.slug}`} className="project-media" aria-label={`Voir l’étude de cas ${project.name}`}>
-          <img src={project.image} alt={project.imageAlt ?? project.name} loading={featured ? "eager" : "lazy"} />
+          <Image
+            src={project.image}
+            alt={project.imageAlt ?? project.name}
+            width={1600}
+            height={900}
+            sizes={featured ? "(max-width: 900px) 100vw, 1160px" : "(max-width: 900px) 100vw, 380px"}
+            priority={featured}
+          />
           <div className="project-media-topline"><span>Étude de cas</span><span>{project.status}</span></div>
           <span className="project-media-overlay">Explorer le produit →</span>
         </Link>
