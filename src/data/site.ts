@@ -5,9 +5,9 @@ const deploymentHost = process.env.NEXT_PUBLIC_SITE_URL
 export const site = {
   name: "Élie Leligny",
   role: "Product Builder Full Stack",
-  tagline: "SaaS, CRM sur mesure, IA & automatisation",
+  tagline: "SaaS, CRM sur mesure, automatisation & produits métiers",
   remote: "100 % télétravail — France",
-  email: process.env.NEXT_PUBLIC_CONTACT_EMAIL ?? "e.leligny@gmail.com",
+  email: "e.leligny@gmail.com",
   url: deploymentHost.replace(/\/$/, ""),
   github: "https://github.com/eleligny-coder",
   malt: "https://www.malt.fr/profile/elieleligny",
@@ -23,9 +23,9 @@ export const nav = [
 ] as const;
 
 export const services = [
-  { title: "SaaS & applications métiers", text: "MVP, frontend, backend, authentification, rôles, données, dashboards, paiements et déploiement." },
+  { title: "SaaS & applications métiers", text: "MVP, frontend, backend, authentification, rôles, données, dashboards, paiements et mise en production." },
   { title: "CRM sur mesure", text: "Leads, contacts, organisations, opportunités, pipelines, activités, relances, documents, KPI et automatisations." },
-  { title: "IA & automatisation", text: "Agents IA, LLM, RAG, OCR, copilotes internes, Make, n8n, API, webhooks et notifications." },
+  { title: "Automatisation & intégrations", text: "Workflows métier, OCR, API, webhooks, n8n, Make, notifications et systèmes d’aide à la décision lorsque le produit le nécessite." },
   { title: "Stripe & monétisation", text: "Checkout, Billing, Connect, abonnements, commissions, droits d’accès et webhooks métier." },
   { title: "Cadrage & pilotage produit", text: "Analyse métier, MVP, roadmap, architecture fonctionnelle, backlog, spécifications, QA et coordination technique." },
 ];
@@ -35,15 +35,15 @@ export const skills = [
   ["Full Stack", "TypeScript, JavaScript, Python, React, Next.js, FastAPI, HTML, CSS, Tailwind, API REST et webhooks"],
   ["Backend & data", "Supabase, PostgreSQL, PL/pgSQL, MongoDB, SQL, RLS, authentification, modélisation de données et permissions"],
   ["CRM sur mesure", "Leads, contacts, organisations, opportunités, pipelines, activités, propositions, contrats, Customer Success et KPI"],
-  ["IA", "LLM, agents IA, systèmes multi-agents, OCR, RAG, analyse documentaire, assistants métier et recommandations"],
+  ["Systèmes intelligents", "LLM, agents spécialisés, OCR, RAG, analyse documentaire, assistants métier et recommandations"],
   ["Automatisation", "n8n, Make, AutomatorWP, intégrations API, webhooks, automatisation CRM, email, notifications et workflows métier"],
   ["SaaS & paiement", "Stripe Checkout, Billing, Connect, abonnements, commissions, KYC, quotas et contrôle des droits d’accès"],
-  ["Cloud & livraison", "Railway, Cloudflare Pages, Cloudflare Workers, Vercel, GitHub, Sentry, Resend, environnements, monitoring, QA et déploiement"],
+  ["Cloud & livraison", "Railway, Cloudflare Pages, Cloudflare Workers, GitHub, Sentry, environnements, monitoring, QA et déploiement"],
 ] as const;
 
 export const trainings = [
   "Créer et structurer son entreprise",
-  "IA pour entrepreneurs et petites entreprises",
+  "Systèmes intelligents pour entrepreneurs et petites entreprises",
   "Concevoir un SaaS ou une application métier",
   "Organiser et automatiser son activité",
 ];
@@ -53,7 +53,7 @@ export const method = [
   ["02", "Structurer", "MVP, priorités, rôles, parcours, statuts et roadmap."],
   ["03", "Architecturer", "Frontend, backend, données, sécurité, API, CRM et paiements."],
   ["04", "Concevoir", "UX métier, dashboards, formulaires, contenus et design system."],
-  ["05", "Construire", "Développement, intégrations, automatisations et IA."],
+  ["05", "Construire", "Développement, intégrations et automatisations."],
   ["06", "Tester", "QA, permissions, responsive, paiements, données et parcours critiques."],
   ["07", "Déployer", "Cloudflare Pages, Railway, monitoring, analytics et amélioration continue."],
 ] as const;
