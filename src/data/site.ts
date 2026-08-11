@@ -1,6 +1,5 @@
 const deploymentHost = process.env.NEXT_PUBLIC_SITE_URL
-  ?? (process.env.VERCEL_PROJECT_PRODUCTION_URL ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}` : undefined)
-  ?? (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : undefined)
+  ?? process.env.CF_PAGES_URL
   ?? "http://localhost:3000";
 
 export const site = {
@@ -39,7 +38,7 @@ export const skills = [
   ["IA", "LLM, agents IA, systèmes multi-agents, OCR, RAG, analyse documentaire, assistants métier et recommandations"],
   ["Automatisation", "n8n, Make, AutomatorWP, intégrations API, webhooks, automatisation CRM, email, notifications et workflows métier"],
   ["SaaS & paiement", "Stripe Checkout, Billing, Connect, abonnements, commissions, KYC, quotas et contrôle des droits d’accès"],
-  ["Cloud & livraison", "Railway, Vercel, Cloudflare, GitHub, Sentry, Resend, environnements, monitoring, QA et déploiement"],
+  ["Cloud & livraison", "Railway, Cloudflare Pages, Cloudflare Workers, Vercel, GitHub, Sentry, Resend, environnements, monitoring, QA et déploiement"],
 ] as const;
 
 export const trainings = [
@@ -56,5 +55,5 @@ export const method = [
   ["04", "Concevoir", "UX métier, dashboards, formulaires, contenus et design system."],
   ["05", "Construire", "Développement, intégrations, automatisations et IA."],
   ["06", "Tester", "QA, permissions, responsive, paiements, données et parcours critiques."],
-  ["07", "Déployer", "Railway, Vercel, monitoring, analytics et amélioration continue."],
+  ["07", "Déployer", "Cloudflare Pages, Railway, monitoring, analytics et amélioration continue."],
 ] as const;
