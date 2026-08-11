@@ -1,8 +1,9 @@
-/* eslint-disable @next/next/no-img-element */
+import Image from "next/image";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { ProjectGallery } from "@/components/project-gallery";
+import { ProjectVisitTracker } from "@/components/project-visit-tracker";
 import { projects, getProject } from "@/data/projects";
 
 export function generateStaticParams(){return projects.map(p=>({slug:p.slug}))}
@@ -13,7 +14,8 @@ export async function generateMetadata({params}:{params:Promise<{slug:string}>})
   return p?{
     title:`${p.name} — étude de cas`,
     description:p.summary,
-    openGraph:p.image?{images:[p.image]}:undefined,
+    alternates:{canonical:`/projets/${p.slug}`},
+    openGraph:p.image?{title:`${p.name} — étude de cas`,description:p.summary,images:[p.image],url:`/projets/${p.slug}`}:undefined,
   }:{title:"Projet"};
 }
 
@@ -23,18 +25,19 @@ export default async function ProjectPage({params}:{params:Promise<{slug:string}
   if(!p)notFound();
 
   return <>
+    <ProjectVisitTracker slug={p.slug}/>
     <section className={`project-hero shell accent-${p.accent}`}>
       <div className="project-hero-copy">
         <span className="eyebrow">{p.eyebrow}</span>
         <h1>{p.name}</h1>
         <p className="summary">{p.summary}</p>
-        <div className="project-meta-row"><div className="status">Statut : {p.status}</div><span className="private-code-badge">Code propriétaire privé</span></div>
+        <div className="project-meta-row"><div className="status">Statut : {p.status}</div><span className="private-code-badge">Dépôt applicatif privé</span></div>
         <div className="tags hero-tags">{p.stack.slice(0,6).map(x=><span key={x}>{x}</span>)}</div>
         {p.languages && <div className="language-proof">{p.languages.map(x=><strong key={x}>{x}</strong>)}</div>}
       </div>
       {p.image && <div className="case-browser project-cover">
         <div className="browser-bar"><span/><span/><span/><small>{p.name}</small></div>
-        <img src={p.image} alt={p.imageAlt ?? p.name}/>
+        <Image src={p.image} alt={p.imageAlt ?? p.name} width={1600} height={900} sizes="(max-width: 900px) 100vw, 720px" priority/>
       </div>}
     </section>
 
@@ -45,6 +48,15 @@ export default async function ProjectPage({params}:{params:Promise<{slug:string}
     <section className="section alt"><div className="shell detail-grid">
       <article className="card"><span className="eyebrow">Le problème</span><h2>Pourquoi ce produit existe</h2><p>{p.problem}</p></article>
       <article className="card"><span className="eyebrow">La réponse</span><h2>Solution produit</h2><p>{p.solution}</p></article>
+    </div></section>
+
+    <section className="section"><div className="shell">
+      <div className="section-title"><span className="eyebrow">Décision produit</span><h2>Du problème à une architecture exploitable.</h2><p>Une lecture rapide pour comprendre le raisonnement produit sans noyer l’étude de cas dans la technique.</p></div>
+      <div className="decision-grid">
+        <article className="decision-step"><span>01 — Défi</span><h3>{p.problem}</h3></article>
+        <article className="decision-step"><span>02 — Décision</span><h3>{p.solution}</h3></article>
+        <article className="decision-step"><span>03 — Preuves</span><h3>{p.features.slice(0,3).join(" · ")}</h3></article>
+      </div>
     </div></section>
 
     <section className="section"><div className="shell detail-grid">
@@ -62,7 +74,7 @@ export default async function ProjectPage({params}:{params:Promise<{slug:string}
     </div></section>}
 
     {p.gallery && p.gallery.length>0 && <section className="section alt"><div className="shell">
-      <div className="section-title"><span className="eyebrow">Produit réel</span><h2>Captures de l’application</h2><p>Cliquez sur une capture pour l’ouvrir en grand. Les écrans sont réels ; le code source et les secrets d’infrastructure restent privés.</p></div>
+      <div className="section-title"><span className="eyebrow">Produit réel</span><h2>Captures de l’application</h2><p>Cliquez sur une capture pour l’ouvrir en grand. Les écrans sont réels ; les dépôts applicatifs et secrets d’infrastructure restent privés.</p></div>
       <ProjectGallery media={p.gallery} projectName={p.name}/>
     </div></section>}
 

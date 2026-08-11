@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useEffect, useState } from "react";
 import type { ProjectMedia } from "@/data/projects";
 
@@ -27,7 +28,7 @@ export function ProjectGallery({ media, projectName }: { media: ProjectMedia[]; 
         <button className="gallery-trigger" type="button" onClick={() => setActive(index)} aria-label={`Agrandir ${item.label}`}>
           <div className="case-browser compact">
             <div className="browser-bar"><span/><span/><span/><small>{item.label}</small></div>
-            <img src={item.src} alt={item.alt} loading="lazy"/>
+            <Image src={item.src} alt={item.alt} width={1600} height={900} sizes="(max-width: 900px) 100vw, 580px" />
           </div>
           <span className="gallery-zoom">Agrandir ↗</span>
         </button>
@@ -41,7 +42,7 @@ export function ProjectGallery({ media, projectName }: { media: ProjectMedia[]; 
       <div className="gallery-lightbox-content">
         <div className="case-browser lightbox-browser">
           <div className="browser-bar"><span/><span/><span/><small>{media[active].label}</small></div>
-          <img src={media[active].src} alt={media[active].alt}/>
+          <Image src={media[active].src} alt={media[active].alt} width={1800} height={1013} sizes="94vw" priority />
         </div>
         <div className="gallery-lightbox-caption"><strong>{media[active].label}</strong><span>{active + 1} / {media.length}</span></div>
       </div>
