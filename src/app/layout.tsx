@@ -1,12 +1,5 @@
 import type { Metadata } from "next";
-import "./globals.css";
-import "./premium.css";
-import "./case-study.css";
-import "./luxury.css";
-import "./polish.css";
-import "./about-media.css";
-import "./gallery.css";
-import "./experience.css";
+import "./styles.css";
 import { Footer, Header } from "@/components/layout";
 import { PremiumExperience } from "@/components/premium-experience";
 import { site } from "@/data/site";
