@@ -9,12 +9,12 @@ export default function Page() {
   return <>
     <PageIntro
       eyebrow="Contact"
-      title="Transformer un besoin en plan d’action."
-      text="Décrivez votre problème, vos utilisateurs, l’existant et le niveau d’avancement. Je peux intervenir sur un SaaS, un CRM sur mesure, une application métier, une automatisation ou un produit IA."
+      title="Un échange utile commence par un problème bien posé."
+      text="Expliquez le contexte, les utilisateurs, l’existant et l’objectif. Je reviens ensuite à l’essentiel : ce qu’il faut construire, dans quel ordre, et pourquoi."
     />
     <section className="section"><div className="shell contact-layout"><div>
-      <article className="card"><span className="eyebrow">Contact direct</span><h2>{site.email}</h2><p>{site.remote}. Missions freelance, collaboration produit ou opportunité professionnelle à distance.</p></article>
-      <article className="card" style={{marginTop:20}}><h3>Préparer l’échange</h3><ul className="list"><li>Problème métier à résoudre</li><li>Utilisateurs ciblés</li><li>Outils, données et stack existants</li><li>Fonctions prioritaires</li><li>Budget et échéance</li></ul></article>
+      <article className="card contact-direct-card"><span className="eyebrow">Contact direct</span><h2><a href={`mailto:${site.email}`}>{site.email}</a></h2><p>{site.remote}. Mission, collaboration produit ou opportunité professionnelle à distance.</p><div className="contact-trust"><span>Réponse directe</span><span>Aucun compte</span><span>Aucune donnée stockée</span></div></article>
+      <article className="card" style={{marginTop:20}}><span className="eyebrow">Pour aller vite</span><h3>Les 5 informations qui rendent un premier échange efficace.</h3><ul className="list"><li>Le problème métier à résoudre</li><li>Les utilisateurs concernés</li><li>L’existant : produit, outils, données, stack</li><li>Le résultat attendu et les priorités</li><li>Le budget et l’échéance, s’ils sont déjà définis</li></ul></article>
     </div><ContactForm/></div></section>
   </>;
 }

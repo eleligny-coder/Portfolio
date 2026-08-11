@@ -1,0 +1,61 @@
+/* Cinematic interaction layer. Loaded last so it can enhance existing premium styles without rewriting them. */
+:root{--cursor-x:50vw;--cursor-y:50vh;--parallax-y:0px;--parallax-y-inverse:0px}
+
+.fx-noise{position:fixed;inset:0;z-index:9998;pointer-events:none;opacity:.035;mix-blend-mode:soft-light;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.45'/%3E%3C/svg%3E")}
+
+.fx-cursor{position:fixed;left:var(--cursor-x);top:var(--cursor-y);z-index:9997;pointer-events:none;border-radius:999px;transform:translate(-50%,-50%);will-change:left,top,transform}
+.fx-cursor-dot{width:4px;height:4px;background:#f3ead7;box-shadow:0 0 14px rgba(216,199,162,.5)}
+.fx-cursor-ring{width:30px;height:30px;border:1px solid rgba(216,199,162,.36);background:rgba(216,199,162,.025);backdrop-filter:blur(2px);transition:width .2s,height .2s,border-color .2s,background .2s}
+body:has(.btn:hover) .fx-cursor-ring,body:has(.text-link:hover) .fx-cursor-ring,body:has(.project-card:hover) .fx-cursor-ring{width:52px;height:52px;border-color:rgba(216,199,162,.58);background:rgba(216,199,162,.055)}
+
+.fx-trail,.fx-burst{position:fixed;z-index:9996;width:5px;height:5px;border-radius:50%;pointer-events:none;background:radial-gradient(circle,#f6eddc 0 28%,#c8b38b 35%,rgba(200,179,139,0) 72%);box-shadow:0 0 12px rgba(216,199,162,.34)}
+.fx-burst{width:7px;height:7px}
+
+.fx-intro{position:fixed;inset:0;z-index:12000;display:grid;place-items:center;pointer-events:none;background:#09090a;animation:fxIntroOut 1.45s cubic-bezier(.16,1,.3,1) both}
+.fx-intro:before,.fx-intro:after{content:"";position:absolute;inset:8%;border:1px solid rgba(216,199,162,.08);transform:scale(.94);animation:fxIntroFrame 1.1s cubic-bezier(.16,1,.3,1) both}
+.fx-intro:after{inset:13%;border-color:rgba(216,199,162,.035);animation-delay:.08s}
+.fx-intro-inner{display:grid;place-items:center;text-align:center;gap:5px;animation:fxIntroContent 1.2s cubic-bezier(.16,1,.3,1) both}
+.fx-intro-inner>span{display:grid;place-items:center;width:92px;height:92px;border-radius:28px;background:linear-gradient(135deg,#f0e7d5,#aa9670);color:#11100e;font-weight:900;font-size:2rem;letter-spacing:-.08em;box-shadow:0 28px 80px rgba(216,199,162,.15)}
+.fx-intro-inner strong{margin-top:18px;font-size:1.15rem;letter-spacing:-.02em}.fx-intro-inner small{color:#8f8a81;text-transform:uppercase;letter-spacing:.16em;font-size:.58rem}
+
+.btn,.text-link,.gallery-trigger{translate:var(--mag-x,0px) var(--mag-y,0px);transition:translate .26s cubic-bezier(.16,1,.3,1),transform .25s,box-shadow .25s,border-color .25s}
+
+.fx-tilt{--fx-rx:0deg;--fx-ry:0deg;--fx-x:50%;--fx-y:50%;transform-style:preserve-3d;will-change:transform;transition:transform .28s cubic-bezier(.16,1,.3,1),box-shadow .35s,border-color .35s!important}
+.fx-tilt:hover{transform:perspective(1200px) rotateX(var(--fx-rx)) rotateY(var(--fx-ry)) translateY(-5px)!important}
+.fx-tilt:before{content:"";position:absolute!important;inset:0!important;z-index:8!important;pointer-events:none!important;border-radius:inherit!important;background:radial-gradient(280px circle at var(--fx-x) var(--fx-y),rgba(255,244,220,.09),transparent 62%)!important;opacity:0!important;transition:opacity .25s!important}
+.fx-tilt:hover:before{opacity:1!important}
+.project-card.fx-tilt .project-media,.audience-card.fx-tilt>*{transform:translateZ(18px)}
+
+.premium-hero-wrap .hero-grid-bg{transform:translateY(var(--parallax-y-inverse));transition:transform .1s linear}
+.hero-glow-one{transform:translate3d(0,var(--parallax-y-inverse),0)}
+.hero-glow-two{transform:translate3d(0,var(--parallax-y),0)}
+.premium-system-card{transform-origin:center center}
+
+.section-title h2,.page-intro h1,.project-hero h1{background:linear-gradient(100deg,#f4f1e9 0%,#f4f1e9 45%,#d9c6a2 58%,#f4f1e9 71%,#f4f1e9 100%);background-size:220% auto;-webkit-background-clip:text;background-clip:text;color:transparent;animation:fxTitleSheen 9s ease-in-out infinite}
+
+.project-card-featured{position:relative;isolation:isolate}.project-card-featured:after{content:"";position:absolute;inset:-1px;z-index:-1;border-radius:inherit;padding:1px;background:linear-gradient(120deg,transparent 15%,rgba(216,199,162,.3) 40%,rgba(255,255,255,.08) 52%,transparent 75%);background-size:250% 100%;animation:fxBorderTravel 7s ease-in-out infinite;mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);mask-composite:exclude}
+
+.project-media-overlay{backdrop-filter:blur(14px) saturate(1.15)}
+.project-card:hover .project-media-overlay{box-shadow:0 10px 35px rgba(0,0,0,.25)}
+
+.stack-strip .shell>div{position:relative}.stack-strip strong{position:relative;overflow:hidden}.stack-strip strong:after{content:"";position:absolute;inset:-1px;background:linear-gradient(105deg,transparent 30%,rgba(255,255,255,.12) 50%,transparent 70%);transform:translateX(-120%)}.stack-strip strong:hover:after{animation:fxChipSweep .75s ease}
+
+.architecture-node,.decision-step,.service-card{position:relative;overflow:hidden}.architecture-node:before,.decision-step:before,.service-card:before{content:"";position:absolute;left:-25%;top:-120%;width:50%;height:300%;transform:rotate(18deg);background:linear-gradient(90deg,transparent,rgba(216,199,162,.035),transparent);transition:left .7s cubic-bezier(.16,1,.3,1)}.architecture-node:hover:before,.decision-step:hover:before,.service-card:hover:before{left:110%}
+
+.gallery-lightbox{animation:fxLightboxIn .35s cubic-bezier(.16,1,.3,1) both}.gallery-lightbox-content{animation:fxLightboxContent .48s cubic-bezier(.16,1,.3,1) both}
+
+.premium-cta{position:relative}.premium-cta:after{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;background:linear-gradient(120deg,transparent 0 34%,rgba(216,199,162,.055) 48%,transparent 62%);background-size:220% 100%;animation:fxCtaSweep 6s ease-in-out infinite}
+
+@keyframes fxIntroOut{0%,68%{opacity:1}100%{opacity:0;visibility:hidden}}
+@keyframes fxIntroFrame{from{opacity:0;transform:scale(.9)}to{opacity:1;transform:scale(1)}}
+@keyframes fxIntroContent{0%{opacity:0;transform:translateY(18px) scale(.96)}35%,76%{opacity:1;transform:none}100%{opacity:0;transform:translateY(-8px) scale(1.02)}}
+@keyframes fxTitleSheen{0%,35%{background-position:100% center}65%,100%{background-position:-120% center}}
+@keyframes fxBorderTravel{0%,28%{background-position:150% 0}64%,100%{background-position:-120% 0}}
+@keyframes fxChipSweep{to{transform:translateX(120%)}}
+@keyframes fxLightboxIn{from{opacity:0;backdrop-filter:blur(0)}to{opacity:1;backdrop-filter:blur(18px)}}
+@keyframes fxLightboxContent{from{opacity:0;transform:translateY(20px) scale(.975)}to{opacity:1;transform:none}}
+@keyframes fxCtaSweep{0%,42%{background-position:130% 0}72%,100%{background-position:-120% 0}}
+
+@media(pointer:coarse){.fx-cursor,.fx-trail{display:none}.fx-tilt:hover{transform:none!important}.btn,.text-link,.gallery-trigger{translate:none}}
+@media(max-width:900px){.fx-intro:before{inset:5%}.fx-intro:after{inset:9%}.section-title h2,.page-intro h1,.project-hero h1{animation:none;background:none;color:var(--text)}}
+@media(prefers-reduced-motion:reduce){.fx-intro,.fx-cursor,.fx-trail,.fx-burst{display:none!important}.fx-tilt,.fx-tilt:hover{transform:none!important}.project-card-featured:after,.premium-cta:after,.section-title h2,.page-intro h1,.project-hero h1{animation:none!important}.section-title h2,.page-intro h1,.project-hero h1{background:none;color:var(--text)}}
