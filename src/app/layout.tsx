@@ -6,7 +6,9 @@ import "./luxury.css";
 import "./polish.css";
 import "./about-media.css";
 import "./gallery.css";
+import "./experience.css";
 import { Footer, Header } from "@/components/layout";
+import { PremiumExperience } from "@/components/premium-experience";
 import { site } from "@/data/site";
 
 export const metadata: Metadata = {
@@ -17,20 +19,21 @@ export const metadata: Metadata = {
   keywords: ["Product Builder", "Développeur Full Stack", "SaaS", "CRM sur mesure", "Intelligence artificielle", "Automatisation", "Python", "TypeScript", "React", "FastAPI", "Supabase", "PostgreSQL", "Stripe", "Railway"],
   authors: [{ name: site.name }],
   creator: site.name,
-  alternates: { canonical: "/" },
   robots: { index: true, follow: true },
   openGraph: {
     title: "Élie Leligny — Product Builder Full Stack",
-    description: "SaaS, CRM sur mesure, IA, automatisation et produits métiers — de l’analyse au déploiement.",
+    description: "SaaS, CRM sur mesure, automatisation et produits métiers — de l’analyse au déploiement.",
     type: "website",
     locale: "fr_FR",
     siteName: "Portfolio — Élie Leligny",
     url: "/",
+    images: [{ url: "/opengraph-image", width: 1200, height: 630, alt: "Élie Leligny — Product Builder Full Stack" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Élie Leligny — Product Builder Full Stack",
-    description: "SaaS, CRM sur mesure, IA, automatisation et produits métiers — de l’analyse au déploiement.",
+    description: "SaaS, CRM sur mesure, automatisation et produits métiers — de l’analyse au déploiement.",
+    images: ["/opengraph-image"],
   },
 };
 
@@ -47,5 +50,5 @@ const structuredData = {
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
-  return <html lang="fr"><body><script type="application/ld+json" dangerouslySetInnerHTML={{__html:JSON.stringify(structuredData)}}/><Header /><main>{children}</main><Footer /></body></html>;
+  return <html lang="fr"><body><script type="application/ld+json" dangerouslySetInnerHTML={{__html:JSON.stringify(structuredData)}}/><PremiumExperience/><Header /><main>{children}</main><Footer /></body></html>;
 }
