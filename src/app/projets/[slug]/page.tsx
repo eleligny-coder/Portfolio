@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { ProjectGallery } from "@/components/project-gallery";
+import { ProjectVisitTracker } from "@/components/project-visit-tracker";
 import { projects, getProject } from "@/data/projects";
 
 export function generateStaticParams(){return projects.map(p=>({slug:p.slug}))}
@@ -24,6 +25,7 @@ export default async function ProjectPage({params}:{params:Promise<{slug:string}
   if(!p)notFound();
 
   return <>
+    <ProjectVisitTracker slug={p.slug}/>
     <section className={`project-hero shell accent-${p.accent}`}>
       <div className="project-hero-copy">
         <span className="eyebrow">{p.eyebrow}</span>
