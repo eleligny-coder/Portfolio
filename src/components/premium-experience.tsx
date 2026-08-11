@@ -4,14 +4,36 @@ import { useEffect, useMemo, useState } from "react";
 import { usePathname } from "next/navigation";
 
 const chapterLabels = ["Intro", "Positionnement", "Projets", "Méthode", "Contact"];
+const STORAGE_KEY = "portfolio:visited-projects";
+const CORE_PROJECTS = 4;
 
 export function PremiumExperience() {
   const pathname = usePathname();
   const [progress, setProgress] = useState(0);
   const [chapter, setChapter] = useState(0);
   const [visible, setVisible] = useState(false);
+  const [visitedProjects, setVisitedProjects] = useState(0);
 
   const score = useMemo(() => Math.min(100, Math.round(progress)), [progress]);
+
+  useEffect(() => {
+    const readVisited = () => {
+      try {
+        const items = JSON.parse(localStorage.getItem(STORAGE_KEY) ?? "[]") as string[];
+        setVisitedProjects(items.length);
+      } catch {
+        setVisitedProjects(0);
+      }
+    };
+
+    readVisited();
+    const onVisited = (event: Event) => {
+      const detail = (event as CustomEvent<string[]>).detail;
+      setVisitedProjects(Array.isArray(detail) ? detail.length : 0);
+    };
+    window.addEventListener("portfolio:project-visited", onVisited);
+    return () => window.removeEventListener("portfolio:project-visited", onVisited);
+  }, [pathname]);
 
   useEffect(() => {
     const root = document.documentElement;
@@ -73,8 +95,10 @@ export function PremiumExperience() {
         <div className="experience-copy">
           <span>Exploration</span>
           <strong>{chapterLabels[chapter]}</strong>
+          <small>{Math.min(visitedProjects, CORE_PROJECTS)} / {CORE_PROJECTS} études majeures</small>
         </div>
       </aside>
+      {visitedProjects >= CORE_PROJECTS && <div className="exploration-complete" role="status"><span>Portfolio exploré</span><strong>4 études majeures découvertes</strong></div>}
     </>
   );
 }
