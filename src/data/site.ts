@@ -1,10 +1,15 @@
+const deploymentHost = process.env.NEXT_PUBLIC_SITE_URL
+  ?? (process.env.VERCEL_PROJECT_PRODUCTION_URL ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}` : undefined)
+  ?? (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : undefined)
+  ?? "http://localhost:3000";
+
 export const site = {
   name: "Élie Leligny",
   role: "Product Builder Full Stack",
   tagline: "SaaS, CRM sur mesure, IA & automatisation",
   remote: "100 % télétravail — France",
   email: process.env.NEXT_PUBLIC_CONTACT_EMAIL ?? "e.leligny@gmail.com",
-  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://example.com",
+  url: deploymentHost.replace(/\/$/, ""),
   github: "https://github.com/eleligny-coder",
   malt: "https://www.malt.fr/profile/elieleligny",
 };
