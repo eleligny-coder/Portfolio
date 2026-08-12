@@ -12,7 +12,7 @@ Je transforme des besoins métier en produits numériques structurés : SaaS, ap
 
 - de vraies captures des produits présentés ;
 - des études de cas avec problème, solution, stack, rôle et statut réel ;
-- un CV en ligne imprimable / enregistrable en PDF depuis `/cv` ;
+- un CV en ligne imprimable et un CV PDF téléchargeable ;
 - une présentation claire de la confidentialité des dépôts produits privés ;
 - une navigation orientée recruteurs et clients : Projets, Services, Compétences, À propos, CV et Contact.
 
@@ -25,7 +25,7 @@ Je transforme des besoins métier en produits numériques structurés : SaaS, ap
 - Automatisations n8n / Make, API REST et webhooks
 - Stripe Checkout, Billing et Connect
 - Architectures Supabase / PostgreSQL / MongoDB
-- Déploiement et exploitation sur Railway / Vercel / Cloudflare
+- Déploiement et exploitation cloud
 - MVP, roadmaps, spécifications, QA, documentation et coordination technique
 
 ## Projets principaux
@@ -96,23 +96,26 @@ L’activité issue des dépôts privés peut apparaître dans le graphique de c
 
 ## Ce repository
 
-Ce dépôt contient le site portfolio public.
+Ce dépôt contient uniquement le site portfolio public.
 
-**Stack :** Next.js 16 · React 19 · TypeScript strict · CSS design system sur mesure · Resend
+**Stack :** Next.js 16 · React 19 · TypeScript strict · CSS design system sur mesure · export statique Cloudflare Pages.
+
+Le contact est volontairement sans backend : le formulaire prépare un email via `mailto:` vers l’adresse publique du portfolio. Aucun compte, stockage de formulaire, Resend ou Turnstile n’est utilisé par ce repository.
 
 ```bash
-npm install
+npm ci
 cp .env.example .env.local
 npm run dev
 ```
 
-Contrôles :
+Contrôles locaux :
 
 ```bash
 npm run check
+npm audit --audit-level=high
 ```
 
-Un workflow GitHub Actions exécute également lint, typecheck et build sur `main` et les pull requests.
+GitHub Actions utilise la version Node définie dans `.node-version`, installe les dépendances verrouillées et exécute l’audit, le lint, le typecheck et le build sur `main` et les pull requests.
 
 ## Contact
 

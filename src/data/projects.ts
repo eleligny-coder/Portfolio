@@ -97,10 +97,9 @@ export const projects: Project[] = [
     stack: ["React", "TypeScript", "TanStack", "Supabase", "PostgreSQL", "PL/pgSQL", "Stripe Connect", "Mapbox"],
     role: ["Vision produit", "Architecture fonctionnelle", "Développement Full Stack", "Modélisation des données", "Stripe", "Documentation", "QA et roadmap"],
     roadmap: ["Stabiliser auth et paiements", "Finaliser la carte", "Harmoniser les RLS", "Étendre progressivement le pôle ESS"],
-    image: "/projects/livre-d-un-clic-wordpress-map-missions.webp",
-    imageAlt: "Carte et recherche de missions de France Reliance sur la nouvelle stack React et Supabase",
+    image: "/projects/france-reliance-centre-entrepreneur.webp",
+    imageAlt: "Centre entrepreneur de France Reliance",
     gallery: [
-      { src: "/projects/livre-d-un-clic-wordpress-map-missions.webp", alt: "Carte des missions et recherche France Reliance", label: "Carte des missions & recherche" },
       { src: "/projects/france-reliance-centre-entrepreneur.webp", alt: "Centre entrepreneur France Reliance", label: "Centre entrepreneur" },
       { src: "/projects/france-reliance-solidarite.webp", alt: "Espace solidarité France Reliance", label: "Pôle solidarité" },
     ],
