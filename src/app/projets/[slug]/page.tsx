@@ -42,7 +42,7 @@ export default async function ProjectPage({params}:{params:Promise<{slug:string}
     </section>
 
     <section className="project-proof-strip"><div className="shell">
-      <span>Étude de cas réelle</span><span>Architecture expliquée</span><span>Captures produit</span><span>Roadmap séparée du construit</span>
+      <span>Étude de cas documentée</span><span>Architecture expliquée</span><span>Captures du projet</span><span>Roadmap séparée du construit</span>
     </div></section>
 
     <section className="section alt"><div className="shell detail-grid">
@@ -74,8 +74,8 @@ export default async function ProjectPage({params}:{params:Promise<{slug:string}
     </div></section>}
 
     {p.gallery && p.gallery.length>0 && <section className="section alt"><div className="shell">
-      <div className="section-title"><span className="eyebrow">Produit réel</span><h2>Captures de l’application</h2><p>Cliquez sur une capture pour l’ouvrir en grand. Les écrans sont réels ; les dépôts applicatifs et secrets d’infrastructure restent privés.</p></div>
-      <ProjectGallery media={p.gallery} projectName={p.name}/>
+      <div className="section-title"><span className="eyebrow">Preuves visuelles</span><h2>Captures du projet</h2><p>Les captures proviennent des interfaces du projet. Le statut affiché précise sa maturité actuelle ; les dépôts applicatifs et secrets d’infrastructure restent privés.</p></div>
+      <ProjectGallery media={p.gallery} projectName={p.name} projectStatus={p.status}/>
     </div></section>}
 
     <section className="section"><div className="shell">
