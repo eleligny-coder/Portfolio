@@ -5,6 +5,9 @@ on:
     branches: [main]
   pull_request:
 
+permissions:
+  contents: write
+
 jobs:
   validate:
     runs-on: ubuntu-latest
@@ -12,6 +15,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v6
+        with:
+          ref: ${{ github.event.pull_request.head.ref || github.ref_name }}
 
       - name: Setup Node
         uses: actions/setup-node@v6
@@ -19,15 +24,29 @@ jobs:
           node-version-file: .node-version
           package-manager-cache: false
 
-      - name: Generate lockfile
+      - name: Check dependency lock
+        id: lock
+        shell: bash
+        run: |
+          if [ -f package-lock.json ]; then
+            echo "exists=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "exists=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Generate dependency lock
+        if: steps.lock.outputs.exists == 'false'
         run: npm install --package-lock-only
 
-      - name: Export generated lockfile
-        uses: actions/upload-artifact@v4
-        with:
-          name: package-lock
-          path: package-lock.json
-          retention-days: 1
+      - name: Commit dependency lock
+        if: github.event_name == 'pull_request' && steps.lock.outputs.exists == 'false'
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add package-lock.json
+          git commit -m "chore: lock portfolio dependencies"
+          git push origin HEAD:${{ github.head_ref }}
 
       - name: Install locked dependencies
         run: npm ci
