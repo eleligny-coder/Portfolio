@@ -6,11 +6,11 @@ import { PageIntro, SectionTitle } from "@/components/layout";
 export const metadata: Metadata = { title: "À propos" };
 
 const journey = [
-  ["01", "WordPress & automatisation", "Premiers sites, formulaires, Elementor, AutomatorWP, tunnels et workflows."],
-  ["02", "Marketplace & coordination", "Conception de Livré d’un Clic, rédaction de spécifications, coordination développeurs, tests et recette."],
-  ["03", "Passage au Full Stack", "React, TypeScript, Supabase, PostgreSQL, RLS, Stripe et architectures applicatives plus robustes."],
-  ["04", "SaaS métiers", "Le Billot Pro et RatioPro : modélisation de processus métier, dashboards, billing, OCR, marges et données."],
-  ["05", "Python, Data & IA", "Parayon : backend Python/FastAPI, data workflows, agents IA, billing, partenaires et cockpit admin."],
+  ["WordPress & automatisation", "Premiers sites, formulaires, Elementor, AutomatorWP, tunnels et workflows."],
+  ["Marketplace & coordination", "Conception de Livré d’un Clic, rédaction de spécifications, coordination développeurs, tests et recette."],
+  ["Passage au Full Stack", "React, TypeScript, Supabase, PostgreSQL, RLS, Stripe et architectures applicatives plus robustes."],
+  ["SaaS métiers", "Le Billot Pro et RatioPro : modélisation de processus métier, dashboards, billing, OCR, marges et données."],
+  ["Python, Data & IA", "Parayon : backend Python/FastAPI, data workflows, agents IA, billing, partenaires et cockpit admin."],
 ] as const;
 
 export default function Page() {
@@ -23,7 +23,7 @@ export default function Page() {
 
     <section className="section alt"><div className="shell">
       <SectionTitle eyebrow="Parcours" title="Une progression construite par les produits." text="Chaque étape a ajouté une couche : métier, workflow, architecture, code, données, monétisation et exploitation."/>
-      <div className="journey">{journey.map(([n,title,text])=><article key={n}><span>{n}</span><div><h3>{title}</h3><p>{text}</p></div></article>)}</div>
+      <div className="journey">{journey.map(([title,text])=><article key={title}><div><h3>{title}</h3><p>{text}</p></div></article>)}</div>
     </div></section>
 
     <section className="section agency-showcase-section"><div className="shell agency-showcase">
