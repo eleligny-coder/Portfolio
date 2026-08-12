@@ -18,6 +18,7 @@ export type Project = {
   accent: string;
   problem: string;
   solution: string;
+  result: string;
   features: string[];
   stack: string[];
   role: string[];
@@ -39,6 +40,7 @@ export const projects: Project[] = [
     accent: "blue",
     problem: "Les utilisateurs disposent de données et d’analyses dispersées, souvent opaques sur leur niveau de risque, leur qualité et leurs limites.",
     solution: "Une plateforme qui structure données, analyses, confiance, risque et historique dans un produit SaaS pilotable, documenté et monétisable.",
+    result: "Un socle SaaS unifié réunit désormais backend Python/FastAPI, moteurs d’analyse, billing, crédits, espace partenaire et cockpit administrateur avant la bêta privée.",
     features: ["Backend Python / FastAPI", "Moteurs d’analyse football", "Billing et crédits", "Espace partenaire", "Cockpit administrateur", "Agents IA et data workflows"],
     stack: ["Python", "FastAPI", "JavaScript", "MongoDB", "Supabase", "Stripe", "Railway", "Vercel"],
     role: ["Vision produit", "Architecture fonctionnelle", "Backend Python", "Data workflows", "IA", "Billing", "UX", "Documentation et QA"],
@@ -66,6 +68,7 @@ export const projects: Project[] = [
     accent: "lime",
     problem: "Les restaurateurs disposent de données dispersées, difficiles à rapprocher et à transformer en actions concrètes sur leurs marges.",
     solution: "Un cockpit métier qui centralise les flux, scanne les factures, calcule les coûts et met en évidence les fuites de profit.",
+    result: "Les flux ventes, achats, factures, recettes, stocks et pertes sont structurés dans un même cockpit métier pour rendre les coûts et marges exploitables.",
     features: ["Import POS", "OCR factures", "Recettes et menus", "Stocks, pertes et DLC", "Simulations de marge", "Recommandations IA"],
     stack: ["Next.js", "TypeScript", "Supabase", "PostgreSQL", "PL/pgSQL", "Stripe", "OCR", "IA"],
     role: ["Conception produit", "Architecture Full Stack", "Modélisation métier", "UX cockpit", "Billing", "QA et commercialisation"],
@@ -93,6 +96,7 @@ export const projects: Project[] = [
     accent: "cyan",
     problem: "Les services locaux, paiements, profils et acteurs solidaires utilisent des outils dispersés et des parcours peu structurés.",
     solution: "Une plateforme centrée sur la mission avec candidatures, validation, Solde Sécurisé Stripe™, dashboards, rôles et traçabilité.",
+    result: "Le prototype WordPress initial a été remplacé par une architecture applicative React/TypeScript/Supabase structurée autour des rôles, missions, candidatures, permissions et paiements Stripe Connect.",
     features: ["Comptes multi-rôles", "Missions et candidatures", "Stripe Connect et KYC", "RLS Supabase", "Dashboards", "Carte et notifications"],
     stack: ["React", "TypeScript", "TanStack", "Supabase", "PostgreSQL", "PL/pgSQL", "Stripe Connect", "Mapbox"],
     role: ["Vision produit", "Architecture fonctionnelle", "Développement Full Stack", "Modélisation des données", "Stripe", "Documentation", "QA et roadmap"],
@@ -121,6 +125,7 @@ export const projects: Project[] = [
     accent: "amber",
     problem: "Les ateliers suivent souvent leurs achats, rendements, productions et marges dans plusieurs fichiers ou avec des calculs manuels.",
     solution: "Un SaaS vertical qui modélise les flux métier et centralise les calculs de coût, rendement, production et rentabilité.",
+    result: "Les principaux flux métier — achats, carcasses, recettes, productions, stocks, rendements et marges — sont centralisés dans une application verticale cohérente.",
     features: ["Achats fournisseurs", "Carcasses et rendements", "Recettes", "Productions", "Stocks", "Exports PDF et rapports IA"],
     stack: ["JavaScript", "Python", "Supabase", "MongoDB", "Stripe Billing", "PWA", "Resend", "Vercel"],
     role: ["Analyse métier", "Architecture produit", "Développement", "Calculs métier", "UX", "Abonnements", "Documentation et roadmap"],
@@ -149,6 +154,7 @@ export const projects: Project[] = [
     accent: "violet",
     problem: "Valider rapidement une marketplace complexe avec profils, missions, candidatures, paiements et workflows multi-étapes.",
     solution: "Un prototype WordPress avancé qui a servi de laboratoire produit avant la reconstruction complète en React, TypeScript, Supabase et PostgreSQL.",
+    result: "Le prototype a permis de formaliser les parcours marketplace et d’identifier les limites de la stack avant la décision de reconstruire le produit sur une architecture applicative moderne.",
     features: ["Profils utilisateurs", "Missions", "Candidatures", "Automatisations", "Stripe", "PDF et dashboards"],
     stack: ["WordPress", "Elementor", "Forminator", "AutomatorWP", "WP User Frontend", "Search & Filter Pro", "Stripe"],
     role: ["Cadrage", "Configuration", "Spécifications", "Coordination développeurs", "Recette", "Suivi des bugs", "Décision de refonte"],
