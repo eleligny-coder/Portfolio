@@ -10,6 +10,6 @@ export const metadata: Metadata = {
 export default function Page() {
   return <>
     <PageIntro eyebrow="Méthode" title="Une exécution structurée, sans bruit." text="Chaque étape réduit une incertitude : besoin, périmètre, architecture, expérience, livraison, qualité puis adoption." />
-    <section className="section"><div className="shell">{method.map(([n, t, d]) => <div className="step" key={n}><b>{n}</b><div><h2>{t}</h2><p>{d}</p></div></div>)}</div></section>
+    <section className="section"><div className="shell">{method.map(([title, description]) => <div className="step" key={title}><div><h2>{title}</h2><p>{description}</p></div></div>)}</div></section>
   </>;
 }
