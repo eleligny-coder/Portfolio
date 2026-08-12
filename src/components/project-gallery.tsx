@@ -4,7 +4,7 @@ import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import type { ProjectMedia } from "@/data/projects";
 
-export function ProjectGallery({ media, projectName }: { media: ProjectMedia[]; projectName: string }) {
+export function ProjectGallery({ media, projectName, projectStatus }: { media: ProjectMedia[]; projectName: string; projectStatus: string }) {
   const [active, setActive] = useState<number | null>(null);
   const dialogRef = useRef<HTMLDivElement>(null);
   const previousFocusRef = useRef<HTMLElement | null>(null);
@@ -67,6 +67,7 @@ export function ProjectGallery({ media, projectName }: { media: ProjectMedia[]; 
   }, [active, media.length]);
 
   return <>
+    <div className="gallery-status-note"><span>Statut du projet</span><strong>{projectStatus}</strong></div>
     <div className={`case-gallery ${media.length === 1 ? "single" : ""}`}>
       {media.map((item, index) => <figure key={item.src} className="case-shot">
         <button className="gallery-trigger" type="button" onClick={() => open(index)} aria-label={`Agrandir ${item.label}`}>
@@ -88,7 +89,7 @@ export function ProjectGallery({ media, projectName }: { media: ProjectMedia[]; 
           <div className="browser-bar"><span/><span/><span/><small>{media[active].label}</small></div>
           <Image src={media[active].src} alt={media[active].alt} width={1800} height={1013} sizes="94vw" priority />
         </div>
-        <div className="gallery-lightbox-caption"><strong>{media[active].label}</strong><span>{active + 1} / {media.length}</span></div>
+        <div className="gallery-lightbox-caption"><div><strong>{media[active].label}</strong><small>{projectStatus}</small></div><span>{active + 1} / {media.length}</span></div>
       </div>
       {media.length > 1 && <button className="gallery-nav gallery-next" type="button" onClick={() => setActive((active + 1) % media.length)} aria-label="Image suivante">→</button>}
     </div>}
