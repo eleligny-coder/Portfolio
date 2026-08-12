@@ -89,7 +89,7 @@ export function ProjectGallery({ media, projectName, projectStatus }: { media: P
           <div className="browser-bar"><span/><span/><span/><small>{media[active].label}</small></div>
           <Image src={media[active].src} alt={media[active].alt} width={1800} height={1013} sizes="94vw" priority />
         </div>
-        <div className="gallery-lightbox-caption"><strong>{media[active].label} · {projectStatus}</strong><span>{active + 1} / {media.length}</span></div>
+        <div className="gallery-lightbox-caption"><strong>{media[active].label} · {projectStatus}</strong></div>
       </div>
       {media.length > 1 && <button className="gallery-nav gallery-next" type="button" onClick={() => setActive((active + 1) % media.length)} aria-label="Image suivante">→</button>}
     </div>}
