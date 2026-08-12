@@ -53,9 +53,9 @@ export default async function ProjectPage({params}:{params:Promise<{slug:string}
     <section className="section"><div className="shell">
       <div className="section-title"><span className="eyebrow">Décision produit</span><h2>Du problème à une architecture exploitable.</h2><p>Une lecture rapide pour comprendre le raisonnement produit sans noyer l’étude de cas dans la technique.</p></div>
       <div className="decision-grid">
-        <article className="decision-step"><span>01 — Défi</span><h3>{p.problem}</h3></article>
-        <article className="decision-step"><span>02 — Décision</span><h3>{p.solution}</h3></article>
-        <article className="decision-step"><span>03 — Preuves</span><h3>{p.features.slice(0,3).join(" · ")}</h3></article>
+        <article className="decision-step"><span>Défi</span><h3>{p.problem}</h3></article>
+        <article className="decision-step"><span>Décision</span><h3>{p.solution}</h3></article>
+        <article className="decision-step"><span>Preuves</span><h3>{p.features.slice(0,3).join(" · ")}</h3></article>
       </div>
     </div></section>
 
@@ -66,8 +66,7 @@ export default async function ProjectPage({params}:{params:Promise<{slug:string}
 
     {p.architecture && p.architecture.length>0 && <section className="section architecture-section"><div className="shell">
       <div className="section-title"><span className="eyebrow">Architecture</span><h2>Comment les briques s’assemblent.</h2><p>Vue simplifiée de l’architecture pour montrer le flux produit sans exposer le code propriétaire ni les secrets d’infrastructure.</p></div>
-      <div className="architecture-flow">{p.architecture.map((layer,index)=><article className="architecture-node" key={layer.label}>
-        <span className="architecture-index">{String(index+1).padStart(2,"0")}</span>
+      <div className="architecture-flow">{p.architecture.map(layer=><article className="architecture-node" key={layer.label}>
         <h3>{layer.label}</h3>
         <div>{layer.items.map(item=><span key={item}>{item}</span>)}</div>
       </article>)}</div>
@@ -80,7 +79,7 @@ export default async function ProjectPage({params}:{params:Promise<{slug:string}
 
     <section className="section"><div className="shell">
       <div className="section-title"><span className="eyebrow">Roadmap</span><h2>Ce qui vient ensuite</h2><p>La roadmap est volontairement séparée de ce qui est déjà construit afin de garder une présentation crédible.</p></div>
-      <div className="grid two">{p.roadmap.map((x,i)=><article className="card roadmap-card" key={x}><span className="eyebrow">Étape {i+1}</span><h3>{x}</h3></article>)}</div>
+      <div className="grid two">{p.roadmap.map(x=><article className="card roadmap-card" key={x}><span className="eyebrow">À venir</span><h3>{x}</h3></article>)}</div>
     </div></section>
 
     <section className="section"><div className="shell cta premium-cta"><div><span className="eyebrow">Mission ou recrutement 100 % remote</span><h2>Un besoin métier comparable ?</h2><p>Je peux cadrer, reprendre ou construire un produit complexe de bout en bout, avec une vision produit et technique.</p></div><div className="actions"><Link className="btn" href="/contact">Échanger sur votre projet</Link><Link className="btn secondary" href="/cv">Voir mon CV</Link></div></div></section>

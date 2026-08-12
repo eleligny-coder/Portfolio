@@ -49,11 +49,11 @@ export const trainings = [
 ];
 
 export const method = [
-  ["01", "Comprendre", "Utilisateurs, contraintes, problème, valeur et modèle économique."],
-  ["02", "Structurer", "MVP, priorités, rôles, parcours, statuts et roadmap."],
-  ["03", "Architecturer", "Frontend, backend, données, sécurité, API, CRM et paiements."],
-  ["04", "Concevoir", "UX métier, dashboards, formulaires, contenus et design system."],
-  ["05", "Construire", "Développement, intégrations et automatisations."],
-  ["06", "Tester", "QA, permissions, responsive, paiements, données et parcours critiques."],
-  ["07", "Déployer", "Cloudflare Pages, Railway, monitoring, analytics et amélioration continue."],
+  ["Comprendre", "Utilisateurs, contraintes, problème, valeur et modèle économique."],
+  ["Structurer", "MVP, priorités, rôles, parcours, statuts et roadmap."],
+  ["Architecturer", "Frontend, backend, données, sécurité, API, CRM et paiements."],
+  ["Concevoir", "UX métier, dashboards, formulaires, contenus et design system."],
+  ["Construire", "Développement, intégrations et automatisations."],
+  ["Tester", "QA, permissions, responsive, paiements, données et parcours critiques."],
+  ["Déployer", "Cloudflare Pages, Railway, monitoring, analytics et amélioration continue."],
 ] as const;
