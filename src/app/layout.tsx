@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import "./styles.css";
 import { Footer, Header } from "@/components/layout";
 import { PremiumExperience } from "@/components/premium-experience";
-import { CinematicEffects } from "@/components/cinematic-effects";
 import { site } from "@/data/site";
 
 export const metadata: Metadata = {
@@ -44,5 +43,5 @@ const structuredData = {
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
-  return <html lang="fr"><body><script type="application/ld+json" dangerouslySetInnerHTML={{__html:JSON.stringify(structuredData)}}/><PremiumExperience/><CinematicEffects/><Header /><main>{children}</main><Footer /></body></html>;
+  return <html lang="fr"><body><script type="application/ld+json" dangerouslySetInnerHTML={{__html:JSON.stringify(structuredData)}}/><PremiumExperience/><Header /><main>{children}</main><Footer /></body></html>;
 }
