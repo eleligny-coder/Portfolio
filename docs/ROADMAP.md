@@ -5,9 +5,9 @@
 - [x] Mettre Next.js à jour vers une version corrigée des advisories de juillet 2026.
 - [x] Supprimer l’ancien backend contact Resend / Turnstile.
 - [x] Aligner la documentation sur le contact direct `mailto:`.
-- [ ] Commiter `package-lock.json` et passer la CI à `npm ci`.
-- [ ] Vérifier `npm audit --audit-level=high` sans vulnérabilité haute.
-- [ ] Clarifier les captures France Reliance et supprimer toute preuve visuelle ambiguë.
+- [x] Commiter `package-lock.json` et passer la CI à `npm ci`.
+- [x] Vérifier `npm audit --audit-level=high` sans vulnérabilité haute.
+- [x] Clarifier les captures France Reliance et supprimer toute preuve visuelle ambiguë.
 
 ## Phase 1 — MVP commercial
 
