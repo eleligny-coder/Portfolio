@@ -82,6 +82,13 @@ export default async function ProjectPage({params}:{params:Promise<{slug:string}
       <div className="grid two">{p.roadmap.map(x=><article className="card roadmap-card" key={x}><span className="eyebrow">À venir</span><h3>{x}</h3></article>)}</div>
     </div></section>
 
+    <section className="section result-section"><div className="shell case-result">
+      <span className="eyebrow">Résultat actuel</span>
+      <h2>Ce qui a réellement été obtenu.</h2>
+      <p>{p.result}</p>
+      <div className="status">{p.status}</div>
+    </div></section>
+
     <section className="section"><div className="shell cta premium-cta"><div><span className="eyebrow">Mission ou recrutement 100 % remote</span><h2>Un besoin métier comparable ?</h2><p>Je peux cadrer, reprendre ou construire un produit complexe de bout en bout, avec une vision produit et technique.</p></div><div className="actions"><Link className="btn" href="/contact">Échanger sur votre projet</Link><Link className="btn secondary" href="/cv">Voir mon CV</Link></div></div></section>
   </>;
 }
