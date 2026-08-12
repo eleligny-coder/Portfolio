@@ -1,0 +1,16 @@
+/* Hotfix visuel : captures toujours visibles et layouts sans colonnes réservées aux anciens numéros. */
+.system-flow>div{grid-template-columns:1fr auto}
+.service-card{display:block}
+.premium-method-step{grid-template-columns:1fr auto}
+.step{grid-template-columns:1fr}
+.journey article{grid-template-columns:1fr}
+
+.project-media{display:block;width:100%;height:auto;aspect-ratio:16/9;background:#0a0a0b;overflow:hidden}
+.project-media img{display:block!important;width:100%!important;height:100%!important;object-fit:contain!important;object-position:center!important;background:#0a0a0b;opacity:1!important;visibility:visible!important}
+.project-card-featured .project-media{height:auto;aspect-ratio:16/9;border-right:1px solid var(--line)}
+.project-card-featured .project-media img{min-height:0!important}
+.project-cover img,.case-browser img,.agency-browser img,.gallery-trigger img{display:block!important;width:100%!important;height:auto!important;object-fit:contain!important;object-position:center!important;opacity:1!important;visibility:visible!important}
+.project-cover,.case-browser,.agency-browser{background:#0a0a0b}
+.case-shot .case-browser{min-height:0}
+
+@media(max-width:1000px){.project-card-featured .project-media{border-right:0;border-bottom:1px solid var(--line)}}
