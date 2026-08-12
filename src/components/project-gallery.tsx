@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import type { ProjectMedia } from "@/data/projects";
 
 export function ProjectGallery({ media, projectName, projectStatus }: { media: ProjectMedia[]; projectName: string; projectStatus: string }) {
@@ -14,10 +14,10 @@ export function ProjectGallery({ media, projectName, projectStatus }: { media: P
     setActive(index);
   };
 
-  const close = () => {
+  const close = useCallback(() => {
     setActive(null);
     window.requestAnimationFrame(() => previousFocusRef.current?.focus());
-  };
+  }, []);
 
   useEffect(() => {
     if (active === null) return;
@@ -64,7 +64,7 @@ export function ProjectGallery({ media, projectName, projectStatus }: { media: P
       document.body.classList.remove("lightbox-open");
       window.removeEventListener("keydown", onKey);
     };
-  }, [active, media.length]);
+  }, [active, close, media.length]);
 
   return <>
     <div className="status">Statut du projet : {projectStatus}</div>
