@@ -8,8 +8,11 @@
 - [x] Commiter `package-lock.json` et passer la CI à `npm ci`.
 - [x] Vérifier `npm audit --audit-level=high` sans vulnérabilité haute.
 - [x] Clarifier les captures France Reliance et supprimer toute preuve visuelle ambiguë.
-- [x] Ajouter `wrangler.jsonc` pour un déploiement Cloudflare Workers assets-only reproductible.
+- [x] Ajouter `wrangler.jsonc` pour un déploiement Cloudflare Workers Static Assets reproductible.
 - [x] Ajouter une QA Chromium desktop + mobile couvrant routes, liens, images, navigation, CV, galerie, contact et accessibilité des boutons.
+- [x] Ajouter une matrice responsive automatisée 320 / 375 / 390 / 430 / 768 px avec contrôle d’overflow horizontal.
+- [x] Ajouter une QA Firefox + WebKit ciblée sur les parcours critiques.
+- [x] Ajouter un quality gate Lighthouse CI avec médiane de trois runs.
 
 ## Socle commercial
 
@@ -25,11 +28,11 @@
 
 ## P1 — Finition premium & performance
 
-- [x] Fusionner les deux contrôleurs d’effets globaux en un seul moteur.
+- [x] Fusionner les contrôleurs d’effets globaux en un seul moteur.
 - [x] Supprimer la traînée DOM et les effets de clic non essentiels.
 - [x] Cadencer pointer et scroll avec `requestAnimationFrame`.
 - [x] Conserver la progression, le HUD et la gamification d’exploration.
-- [x] Rationaliser les styles de 10 feuilles historiques à 6 couches cohérentes.
+- [x] Rationaliser les styles historiques en couches cohérentes et conserver `visual-fixes.css` comme couche finale explicite pour les corrections captures / LCP.
 - [x] Créer une couche `theme.css` finale pour neutraliser l’esthétique cyan héritée hors identités projet.
 - [x] Consolider les styles études de cas, galerie, contact et médias dans `components.css`.
 - [x] Consolider les couches d’animation dans `motion.css`.
@@ -37,16 +40,20 @@
 - [x] Simplifier le contact à quatre informations principales avec contexte avancé optionnel.
 - [x] Qualifier les preuves visuelles avec le statut réel du projet.
 - [x] Respecter `prefers-reduced-motion` dans le moteur d’expérience final.
+- [x] Différer strictement les captures projet hors viewport afin de réduire le transfert initial.
+- [x] Faire peindre immédiatement la carte projet signature afin de protéger le LCP sans supprimer les interactions premium.
 
 ## P2 — SEO & hardening
 
 - [x] Garder `/formations` et `/methode` accessibles mais hors index afin de ne pas diluer le tunnel principal.
+- [x] Exclure ces pages `noindex` du sitemap public.
 - [x] Ajouter une Content-Security-Policy au déploiement statique Cloudflare.
 - [x] Renforcer les headers navigateur et la Permissions-Policy.
 - [x] Empêcher l’indexation des URLs de preview `workers.dev`.
 - [x] Conserver un cache long pour les assets Next fingerprintés.
 - [x] Aligner le README GitHub avec Workers Static Assets, la QA Playwright, l’URL Malt et les limites de preuve.
 - [x] Relier la personne et Livré d’un Clic SASU dans les données structurées du site.
+- [ ] Ajouter des canonicals explicites route par route si le besoin SEO le justifie ; le quality gate SEO actuel est déjà à 100 sur les pages critiques.
 - [ ] Renseigner la description et les topics du repository depuis les paramètres GitHub.
 - [ ] Ajouter des métriques aux études de cas uniquement lorsqu’elles sont vérifiables.
 
@@ -64,15 +71,26 @@
 
 ## P4 — Acquisition
 
-- [ ] Analytics respectueux de la confidentialité.
-- [ ] Monitoring si nécessaire.
-- [ ] Prise de rendez-vous.
-- [ ] Version anglaise.
+- [ ] Ajouter des analytics respectueux de la confidentialité uniquement si une vraie mesure d’acquisition devient nécessaire.
+- [ ] Ajouter du monitoring de disponibilité si le domaine public devient un canal d’acquisition critique.
+- [x] Conserver pour l’instant un contact direct par email, sans module de prise de rendez-vous.
+- [ ] Ajouter une version anglaise lorsque la cible internationale devient prioritaire.
 
 ## Finition avant audit final
 
-- [ ] Vérifier le déploiement réel sur le domaine final après merge.
-- [ ] Audit responsive dédié 320 / 375 / 390 / 430 px et tablette.
-- [ ] Audit Lighthouse production : Performance ≥ 90, Accessibility ≥ 95, Best Practices ≥ 95, SEO ≥ 95.
-- [ ] Vérifier Chrome, Edge, Firefox et Safari sur le site réellement déployé.
-- [ ] Refaire l’audit final preuves, réassurance, conversion, clarté de l’offre et niveau premium.
+### Validé dans le repository
+
+- [x] Audit responsive 320 / 375 / 390 / 430 px et tablette.
+- [x] Chromium desktop + mobile sur la suite complète.
+- [x] Firefox + WebKit sur les parcours critiques.
+- [x] Lighthouse CI sur l’export statique : Performance ≥ 90, Accessibilité ≥ 95, Best Practices ≥ 95, SEO ≥ 95.
+- [x] `npm audit --audit-level=high`, lint, typecheck et build intégrés au gate de merge.
+- [x] Documentation de déploiement alignée sur Cloudflare Workers Static Assets.
+
+### Reste externe / production
+
+- [ ] Vérifier que `https://elieleligny.fr` sert réellement le dernier commit après déploiement Cloudflare.
+- [ ] Vérifier les headers, `robots.txt`, `sitemap.xml` et métadonnées sur le domaine public réel.
+- [ ] Faire au moins un passage sur iPhone / Safari physique et Android physique.
+- [ ] Vérifier Edge réel si une validation navigateur constructeur est requise.
+- [ ] Refaire l’audit final preuves, réassurance, conversion, clarté de l’offre et niveau premium après validation du domaine public.
