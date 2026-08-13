@@ -1,5 +1,7 @@
 import { defineConfig, devices } from "@playwright/test";
 
+const clipboardPermissions = ["clipboard-read", "clipboard-write"];
+
 const responsiveProject = (name, width, height = 900) => ({
   name,
   testMatch: /responsive\.spec\.mjs/,
@@ -18,7 +20,6 @@ export default defineConfig({
     baseURL: "http://127.0.0.1:4173",
     trace: "retain-on-failure",
     screenshot: "only-on-failure",
-    permissions: ["clipboard-read", "clipboard-write"],
   },
   webServer: {
     command: "python3 -m http.server 4173 -d out",
@@ -29,18 +30,28 @@ export default defineConfig({
   projects: [
     {
       name: "desktop-chromium",
-      testIgnore: /responsive\.spec\.mjs/,
-      use: { ...devices["Desktop Chrome"] },
+      testIgnore: [/responsive\.spec\.mjs/, /cross-browser\.spec\.mjs/],
+      use: { ...devices["Desktop Chrome"], permissions: clipboardPermissions },
     },
     {
       name: "mobile-chromium",
-      testIgnore: /responsive\.spec\.mjs/,
-      use: { ...devices["Pixel 7"] },
+      testIgnore: [/responsive\.spec\.mjs/, /cross-browser\.spec\.mjs/],
+      use: { ...devices["Pixel 7"], permissions: clipboardPermissions },
     },
     responsiveProject("responsive-320", 320, 760),
     responsiveProject("responsive-375", 375, 812),
     responsiveProject("responsive-390", 390, 844),
     responsiveProject("responsive-430", 430, 932),
     responsiveProject("responsive-tablet", 768, 1024),
+    {
+      name: "firefox",
+      testMatch: /cross-browser\.spec\.mjs/,
+      use: { ...devices["Desktop Firefox"] },
+    },
+    {
+      name: "webkit",
+      testMatch: /cross-browser\.spec\.mjs/,
+      use: { ...devices["Desktop Safari"] },
+    },
   ],
 });
