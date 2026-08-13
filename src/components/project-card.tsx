@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { DeferredProjectImage } from "@/components/deferred-project-image";
 import type { Project } from "@/data/projects";
 
 export function ProjectCard({ project, featured = false }: { project: Project; featured?: boolean }) {
@@ -7,17 +8,26 @@ export function ProjectCard({ project, featured = false }: { project: Project; f
     <article className={`project-card accent-${project.accent} ${featured ? "project-card-featured" : ""}`}>
       {project.image ? (
         <Link href={`/projets/${project.slug}`} className="project-media" aria-label={`Voir l’étude de cas ${project.name}`}>
-          <Image
-            src={project.image}
-            alt={project.imageAlt ?? project.name}
-            width={1600}
-            height={900}
-            sizes={featured ? "(max-width: 900px) 100vw, 1160px" : "(max-width: 900px) 100vw, 380px"}
-            priority={featured}
-            loading={featured ? "eager" : "lazy"}
-            fetchPriority={featured ? "high" : "low"}
-            decoding="async"
-          />
+          {featured ? (
+            <Image
+              src={project.image}
+              alt={project.imageAlt ?? project.name}
+              width={1600}
+              height={900}
+              sizes="(max-width: 900px) 100vw, 1160px"
+              priority
+              loading="eager"
+              fetchPriority="high"
+              decoding="async"
+            />
+          ) : (
+            <DeferredProjectImage
+              src={project.image}
+              alt={project.imageAlt ?? project.name}
+              width={1600}
+              height={900}
+            />
+          )}
           <div className="project-media-topline"><span>Étude de cas</span><span>{project.status}</span></div>
           <span className="project-media-overlay">Explorer le produit →</span>
         </Link>
