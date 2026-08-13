@@ -13,4 +13,13 @@
 .project-cover,.case-browser,.agency-browser{background:#0a0a0b}
 .case-shot .case-browser{min-height:0}
 
+/* The signature screenshot is a likely LCP candidate on /projets: paint it immediately,
+   while retaining the premium hover/tilt interaction after first render. */
+.projects-index .project-card-featured.reveal-ready{
+  opacity:1;
+  transform:none;
+  filter:none;
+  transition:transform .45s cubic-bezier(.16,1,.3,1),border-color .3s,box-shadow .4s;
+}
+
 @media(max-width:1000px){.project-card-featured .project-media{border-right:0;border-bottom:1px solid var(--line)}}
