@@ -11,7 +11,7 @@ permissions:
 jobs:
   validate:
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 30
     steps:
       - name: Checkout
         uses: actions/checkout@v6
@@ -40,3 +40,88 @@ jobs:
 
       - name: Run browser smoke tests
         run: npx playwright test
+
+      - name: Install Lighthouse CI
+        run: npm install --no-save --package-lock=false @lhci/cli@0.15.x
+
+      - name: Run Lighthouse quality gates
+        shell: bash
+        run: |
+          CHROME_PATH="$(which google-chrome || which google-chrome-stable || which chromium || true)"
+          if [ -z "$CHROME_PATH" ]; then
+            echo "No Chrome/Chromium executable available for Lighthouse CI"
+            exit 1
+          fi
+          export CHROME_PATH
+
+          set +e
+          npx lhci autorun --config=./lighthouserc.cjs
+          LHCI_EXIT=$?
+          set -e
+
+          node <<'NODE'
+          const fs = require("fs");
+          const path = require("path");
+
+          const reportDir = ".lighthouseci";
+          const files = fs.existsSync(reportDir)
+            ? fs.readdirSync(reportDir).filter((file) => /^lhr-.*\.json$/.test(file))
+            : [];
+
+          if (!files.length) {
+            console.log("::error title=Lighthouse diagnostics::No Lighthouse JSON reports were produced");
+            process.exit(0);
+          }
+
+          const value = (report, audit) => report.audits?.[audit]?.numericValue ?? 0;
+          const grouped = new Map();
+          for (const file of files) {
+            const report = JSON.parse(fs.readFileSync(path.join(reportDir, file), "utf8"));
+            const rawUrl = report.finalDisplayedUrl || report.finalUrl || report.requestedUrl || "http://localhost/";
+            let pathname = rawUrl;
+            try {
+              pathname = new URL(rawUrl).pathname || "/";
+            } catch {}
+
+            const run = {
+              performance: Math.round((report.categories?.performance?.score ?? 0) * 100),
+              accessibility: Math.round((report.categories?.accessibility?.score ?? 0) * 100),
+              bestPractices: Math.round((report.categories?.["best-practices"]?.score ?? 0) * 100),
+              seo: Math.round((report.categories?.seo?.score ?? 0) * 100),
+              fcp: value(report, "first-contentful-paint"),
+              lcp: value(report, "largest-contentful-paint"),
+              tbt: value(report, "total-blocking-time"),
+              cls: value(report, "cumulative-layout-shift"),
+              speedIndex: value(report, "speed-index"),
+              bytes: value(report, "total-byte-weight"),
+            };
+
+            if (!grouped.has(pathname)) grouped.set(pathname, []);
+            grouped.get(pathname).push(run);
+          }
+
+          const median = (values) => {
+            const sorted = [...values].sort((a, b) => a - b);
+            const middle = Math.floor(sorted.length / 2);
+            return sorted.length % 2
+              ? sorted[middle]
+              : (sorted[middle - 1] + sorted[middle]) / 2;
+          };
+          const whole = (values) => Math.round(median(values));
+          const seconds = (values) => `${(median(values) / 1000).toFixed(2)}s`;
+
+          for (const [pathname, runs] of grouped) {
+            const scores = {
+              performance: whole(runs.map((run) => run.performance)),
+              accessibility: whole(runs.map((run) => run.accessibility)),
+              bestPractices: whole(runs.map((run) => run.bestPractices)),
+              seo: whole(runs.map((run) => run.seo)),
+            };
+            const scoreMessage = `Performance ${scores.performance} | Accessibility ${scores.accessibility} | Best Practices ${scores.bestPractices} | SEO ${scores.seo}`;
+            const metricMessage = `FCP ${seconds(runs.map((run) => run.fcp))} | LCP ${seconds(runs.map((run) => run.lcp))} | TBT ${whole(runs.map((run) => run.tbt))}ms | CLS ${median(runs.map((run) => run.cls)).toFixed(3)} | Speed Index ${seconds(runs.map((run) => run.speedIndex))} | Transfer ${Math.round(median(runs.map((run) => run.bytes)) / 1024)}KB`;
+            const passes = scores.performance >= 90 && scores.accessibility >= 95 && scores.bestPractices >= 95 && scores.seo >= 95;
+            console.log(`::${passes ? "notice" : "error"} title=Lighthouse ${pathname}::${scoreMessage} | ${metricMessage}`);
+          }
+          NODE
+
+          exit "$LHCI_EXIT"
