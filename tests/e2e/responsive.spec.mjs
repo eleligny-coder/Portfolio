@@ -74,7 +74,8 @@ test("mobile and tablet menu remains fully usable inside the viewport", async ({
 
 test("contact and project proof content remains readable at narrow widths", async ({ page }) => {
   await page.goto("/contact/");
-  await expect(page.getByRole("link", { name: "e.leligny@gmail.com", exact: true })).toBeVisible();
+  const contactCard = page.locator(".contact-direct-card");
+  await expect(contactCard.getByRole("link", { name: "e.leligny@gmail.com", exact: true })).toBeVisible();
   await expect(page.getByRole("button", { name: /Préparer l’email/ })).toBeVisible();
   await expectNoHorizontalOverflow(page, "/contact/");
 
