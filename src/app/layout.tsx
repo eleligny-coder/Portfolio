@@ -30,16 +30,40 @@ export const metadata: Metadata = {
   },
 };
 
+const personId = `${site.url}/#person`;
+const companyId = `${site.url}/entreprise/#organization`;
+
 const structuredData = {
   "@context": "https://schema.org",
-  "@type": "Person",
-  name: site.name,
-  url: site.url,
-  jobTitle: "Product Builder Full Stack",
-  description: "Conception de SaaS, CRM sur mesure, applications métiers, solutions IA et automatisations.",
-  sameAs: [site.github, site.malt],
-  knowsAbout: ["SaaS", "CRM", "Python", "TypeScript", "React", "FastAPI", "PostgreSQL", "Supabase", "Stripe", "Intelligence artificielle", "Automatisation"],
-  worksFor: { "@type": "Organization", name: "Livré d’un Clic SASU" },
+  "@graph": [
+    {
+      "@type": "Person",
+      "@id": personId,
+      name: site.name,
+      url: site.url,
+      jobTitle: "Product Builder Full Stack",
+      description: "Conception de SaaS, CRM sur mesure, applications métiers, solutions IA et automatisations.",
+      sameAs: [site.github, site.malt],
+      knowsAbout: ["SaaS", "CRM", "Python", "TypeScript", "React", "FastAPI", "PostgreSQL", "Supabase", "Stripe", "Intelligence artificielle", "Automatisation"],
+      worksFor: { "@id": companyId },
+    },
+    {
+      "@type": "Organization",
+      "@id": companyId,
+      name: "Livré d’un Clic SASU",
+      legalName: "LIVRE D’UN CLIC",
+      identifier: "944887280",
+      url: `${site.url}/entreprise`,
+      founder: { "@id": personId },
+      address: {
+        "@type": "PostalAddress",
+        streetAddress: "60 rue François 1er",
+        postalCode: "75008",
+        addressLocality: "Paris",
+        addressCountry: "FR",
+      },
+    },
+  ],
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {

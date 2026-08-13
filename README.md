@@ -2,105 +2,92 @@
 
 **SaaS · CRM sur mesure · IA · Automatisation · Stripe · Cloud**
 
-Portfolio professionnel d’Élie Leligny, Product Builder Full Stack et fondateur de Livré d’un Clic SASU.
+Portfolio professionnel d’Élie Leligny, Product Builder Full Stack et fondateur de **Livré d’un Clic SASU**.
 
 Je transforme des besoins métier en produits numériques structurés : SaaS, applications métiers, CRM, marketplaces, dashboards, automatisations et systèmes IA.
 
-**Disponibilité : 100 % télétravail — France**
+**Portfolio :** https://elieleligny.fr  
+**Disponibilité :** 100 % télétravail — France
 
-## Ce que montre le portfolio
+## Ce que ce portfolio permet de vérifier
 
-- de vraies captures des produits présentés ;
-- des études de cas avec problème, solution, stack, rôle et statut réel ;
-- un CV en ligne imprimable et un CV PDF téléchargeable ;
-- une présentation claire de la confidentialité des dépôts produits privés ;
-- une navigation orientée recruteurs et clients : Projets, Services, Compétences, À propos, CV et Contact.
-
-## Ce que je construis
-
-- SaaS B2B et applications métiers sur mesure
-- CRM : leads, contacts, organisations, opportunités, pipelines, activités, propositions, contrats et KPI
-- Dashboards clients, administrateurs et partenaires
-- Agents IA, LLM, RAG, OCR et assistants métier
-- Automatisations n8n / Make, API REST et webhooks
-- Stripe Checkout, Billing et Connect
-- Architectures Supabase / PostgreSQL / MongoDB
-- Déploiement et exploitation cloud
-- MVP, roadmaps, spécifications, QA, documentation et coordination technique
+- captures réelles des interfaces disponibles ;
+- études de cas avec problème, solution, architecture, stack, rôle, statut et résultat actuel ;
+- séparation explicite entre ce qui est construit et ce qui reste en roadmap ;
+- limites de preuve affichées lorsqu’un dépôt, une métrique ou un résultat commercial n’est pas public ;
+- CV en ligne imprimable et CV PDF téléchargeable ;
+- page dédiée à Livré d’un Clic SASU, structure derrière les produits présentés ;
+- parcours recruteur et client orientés vers les projets, les preuves et le contact direct.
 
 ## Projets principaux
 
 ### Parayon
 Plateforme SaaS d’analyse sportive assistée par IA.
 
-**Stack :** Python, FastAPI, JavaScript, MongoDB, Supabase, Stripe, Railway, Vercel.
-
-Travail réalisé autour du backend Python, des moteurs d’analyse, du billing, des crédits, des workflows data, de l’espace partenaire, du cockpit administrateur et de l’architecture IA.
-
+**Stack :** Python, FastAPI, JavaScript, MongoDB, Supabase, Stripe, Railway, Vercel.  
 **Statut :** en développement — bêta privée en préparation.
+
+Travail documenté autour du backend Python, des moteurs d’analyse, du billing, des crédits, des workflows data, de l’espace partenaire, du cockpit administrateur et de l’architecture IA.
 
 ### RatioPro
 Copilote IA de rentabilité pour restaurateurs.
 
-**Stack :** Next.js, TypeScript, Supabase, PostgreSQL, PL/pgSQL, Stripe, OCR, IA.
+**Stack :** Next.js, TypeScript, Supabase, PostgreSQL, PL/pgSQL, Stripe, OCR, IA.  
+**Statut :** produit SaaS en finalisation commerciale.
 
-Gestion des ventes, achats, factures, recettes, stocks, pertes, marges, simulations et recommandations métier.
-
-**Statut :** finalisation commerciale.
+Ventes, achats, factures, recettes, stocks, pertes, marges, simulations et recommandations métier sont structurés dans un même cockpit.
 
 ### France Reliance™
 Marketplace SaaS territoriale multi-rôles.
 
-**Stack :** React, TypeScript, TanStack, Supabase, PostgreSQL, PL/pgSQL, Stripe Connect, Mapbox.
-
-Missions, candidatures, workflows de validation, paiements sécurisés, KYC, dashboards, RLS et parcours multi-rôles.
-
+**Stack :** React, TypeScript, TanStack, Supabase, PostgreSQL, PL/pgSQL, Stripe Connect, Mapbox.  
 **Statut :** MVP en développement — stabilisation technique.
+
+Missions, candidatures, workflows de validation, paiements, KYC, dashboards, RLS et parcours multi-rôles. Le prototype WordPress historique est présenté séparément de l’architecture actuelle.
 
 ### Le Billot Pro
 SaaS métier pour boucheries et ateliers de transformation.
 
-**Stack :** JavaScript, Python, Supabase, MongoDB, Stripe Billing, PWA, Resend, Vercel.
+**Stack :** JavaScript, Python, Supabase, MongoDB, Stripe Billing, PWA, Resend, Vercel.  
+**Statut :** MVP métier / démonstration.
 
 Achats, carcasses, rendements, recettes, productions, stocks, pertes, marges, PDF et rapports IA.
 
-**Statut :** MVP métier / démonstration.
-
 ## Stack principale
 
-### Full Stack
-TypeScript · JavaScript · Python · React · Next.js · FastAPI · HTML · CSS · Tailwind
+**Full Stack** — TypeScript · JavaScript · Python · React · Next.js · FastAPI · HTML · CSS · Tailwind  
+**Backend & data** — Supabase · PostgreSQL · PL/pgSQL · MongoDB · SQL · RLS · API REST · Webhooks  
+**IA** — LLM · Agents IA · Multi-agents · RAG · OCR · OpenAI API · Assistants métier  
+**SaaS & paiement** — Stripe Checkout · Stripe Billing · Stripe Connect · Abonnements · Commissions · KYC  
+**Automatisation** — n8n · Make · AutomatorWP · API · Webhooks · Resend  
+**Cloud & livraison** — Railway · Vercel · Cloudflare · GitHub · Sentry · Monitoring
 
-### Backend & data
-Supabase · PostgreSQL · PL/pgSQL · MongoDB · SQL · RLS · API REST · Webhooks
+## Architecture du portfolio
 
-### IA
-LLM · Agents IA · Multi-agents · RAG · OCR · OpenAI API · Assistants métier
+Ce repository contient uniquement le site portfolio public.
 
-### SaaS & paiement
-Stripe Checkout · Stripe Billing · Stripe Connect · Abonnements · Commissions · KYC
+- **Next.js 16 / React 19 / TypeScript strict** ;
+- export statique avec `output: "export"` ;
+- images servies directement pour la compatibilité export statique ;
+- design system CSS sur mesure ;
+- un contrôleur global d’expérience pour scroll, reveal, tilt et interactions premium ;
+- `wrangler.jsonc` pour **Cloudflare Workers Static Assets** ;
+- headers de sécurité et CSP via `public/_headers` ;
+- contact sans backend : préparation d’un email via `mailto:` ;
+- aucune base de données de contact et aucun compte utilisateur.
 
-### Automatisation
-n8n · Make · AutomatorWP · API · Webhooks · Resend
+## QA et sécurité
 
-### Cloud & livraison
-Railway · Vercel · Cloudflare · GitHub · Sentry · Monitoring
+La CI GitHub Actions exécute sur les pull requests et `main` :
 
-## Pourquoi les dépôts produits sont privés
+1. installation reproductible avec `npm ci` ;
+2. `npm audit --audit-level=high` ;
+3. lint ;
+4. typecheck TypeScript ;
+5. build statique Next.js ;
+6. smoke tests **Playwright / Chromium desktop + mobile**.
 
-Les applications présentées ici sont des produits propriétaires. Leur code source reste donc privé.
-
-Ce portfolio public présente volontairement les **problèmes métier, architectures, fonctionnalités, stacks, rôles, captures et statuts réels** sans exposer le code, les secrets, les données clients ou la propriété intellectuelle.
-
-L’activité issue des dépôts privés peut apparaître dans le graphique de contributions GitHub sans donner accès au contenu des dépôts.
-
-## Ce repository
-
-Ce dépôt contient uniquement le site portfolio public.
-
-**Stack :** Next.js 16 · React 19 · TypeScript strict · CSS design system sur mesure · export statique Cloudflare Pages.
-
-Le contact est volontairement sans backend : le formulaire prépare un email via `mailto:` vers l’adresse publique du portfolio. Aucun compte, stockage de formulaire, Resend ou Turnstile n’est utilisé par ce repository.
+La suite navigateur vérifie notamment les routes, liens internes, images, navigation desktop/mobile, clavier, téléchargement et impression du CV, cartes projet, galerie/lightbox, formulaire de contact, presse-papiers et noms accessibles des boutons.
 
 ```bash
 npm ci
@@ -108,19 +95,33 @@ cp .env.example .env.local
 npm run dev
 ```
 
-Contrôles locaux :
+Contrôles locaux principaux :
 
 ```bash
 npm run check
 npm audit --audit-level=high
 ```
 
-GitHub Actions utilise la version Node définie dans `.node-version`, installe les dépendances verrouillées et exécute l’audit, le lint, le typecheck et le build sur `main` et les pull requests.
+Pour reproduire la QA navigateur utilisée en CI :
+
+```bash
+npm install --no-save --package-lock=false @playwright/test@1.60.0
+npx playwright install chromium
+npx playwright test
+```
+
+## Confidentialité des produits
+
+Les applications présentées sont des produits propriétaires. Leur code source reste privé.
+
+Le portfolio public expose volontairement les **problèmes métier, architectures simplifiées, fonctionnalités, stacks, rôles, captures, statuts et résultats actuels** sans publier le code propriétaire, les secrets d’infrastructure ou des données sensibles.
+
+Une capture d’interface n’est pas présentée comme une métrique d’usage ou un témoignage client. Les preuves commerciales ne sont ajoutées que lorsqu’elles sont réellement vérifiables.
 
 ## Contact
 
 - GitHub : `eleligny-coder`
-- Malt : `malt.fr/profile/elieleligny`
+- Malt : `malt.fr/profile/elieleligny1`
 - Email : `e.leligny@gmail.com`
 
 Je recherche des **missions freelance et opportunités professionnelles 100 % à distance** autour du Full Stack, SaaS, Product Building, CRM, IA et automatisation.

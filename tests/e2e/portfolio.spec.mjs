@@ -9,6 +9,7 @@ const coreRoutes = [
   "/entreprise/",
   "/cv/",
   "/contact/",
+  "/confidentialite/",
   "/formations/",
   "/methode/",
   "/projets/parayon/",
@@ -207,6 +208,7 @@ test("external proof links and mailto destination are correct", async ({ page })
 
   await page.goto("/contact/");
   await expect(page.locator('a[href="mailto:e.leligny@gmail.com"]').first()).toBeVisible();
+  await expect(page.getByRole("link", { name: /Voir comment les données sont traitées/ })).toHaveAttribute("href", "/confidentialite/");
 });
 
 test("all visible buttons have an accessible name", async ({ page }) => {
