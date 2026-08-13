@@ -60,7 +60,7 @@ export default async function ProjectPage({params}:{params:Promise<{slug:string}
     </div></section>
 
     <section className="section"><div className="shell detail-grid">
-      <div><span className="eyebrow">Fonctionnel</span><h2>Ce que le produit démontre</h2><ul className="list">{p.features.map(x=><li key={x}>{x}</li>)}</ul></div>
+      <div><span className="eyebrow">Fonctionnel</span><h2>Ce qui est déjà documenté</h2><ul className="list">{p.features.map(x=><li key={x}>{x}</li>)}</ul></div>
       <div><span className="eyebrow">Exécution</span><h2>Stack & rôle</h2><div className="tags large-tags">{p.stack.map(x=><span key={x}>{x}</span>)}</div><h3>Mon rôle</h3><ul className="list">{p.role.map(x=><li key={x}>{x}</li>)}</ul></div>
     </div></section>
 
@@ -76,6 +76,11 @@ export default async function ProjectPage({params}:{params:Promise<{slug:string}
       <div className="section-title"><span className="eyebrow">Preuves visuelles</span><h2>Captures du projet</h2><p>Les captures proviennent des interfaces du projet. Le statut affiché précise sa maturité actuelle ; les dépôts applicatifs et secrets d’infrastructure restent privés.</p></div>
       <ProjectGallery media={p.gallery} projectName={p.name} projectStatus={p.status}/>
     </div></section>}
+
+    <section className="section"><div className="shell detail-grid">
+      <article className="card"><span className="eyebrow">Preuves disponibles</span><h2>Ce que ce portfolio permet de vérifier</h2><ul className="list"><li>Le statut actuel du projet est affiché sans masquer son niveau de maturité.</li><li>Les captures disponibles montrent les interfaces présentées dans l’étude de cas.</li><li>La stack, l’architecture simplifiée et mon rôle sont explicités.</li><li>Le construit et la roadmap sont présentés dans des sections séparées.</li></ul></article>
+      <article className="card"><span className="eyebrow">Limites de preuve</span><h2>Ce que je ne présente pas comme acquis</h2><p>Le dépôt applicatif est propriétaire et reste privé. Une capture d’interface ne remplace pas une métrique d’usage, un témoignage client ou un résultat commercial : ces éléments ne sont ajoutés que lorsqu’ils sont réellement vérifiables.</p></article>
+    </div></section>
 
     <section className="section"><div className="shell">
       <div className="section-title"><span className="eyebrow">Roadmap</span><h2>Ce qui vient ensuite</h2><p>La roadmap est volontairement séparée de ce qui est déjà construit afin de garder une présentation crédible.</p></div>
