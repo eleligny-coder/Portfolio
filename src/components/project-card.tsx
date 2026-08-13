@@ -14,6 +14,9 @@ export function ProjectCard({ project, featured = false }: { project: Project; f
             height={900}
             sizes={featured ? "(max-width: 900px) 100vw, 1160px" : "(max-width: 900px) 100vw, 380px"}
             priority={featured}
+            loading={featured ? "eager" : "lazy"}
+            fetchPriority={featured ? "high" : "low"}
+            decoding="async"
           />
           <div className="project-media-topline"><span>Étude de cas</span><span>{project.status}</span></div>
           <span className="project-media-overlay">Explorer le produit →</span>
