@@ -48,7 +48,7 @@ export function Footer() {
       <div className="shell footer-grid">
         <div><strong>{site.name}</strong><p>{site.role} — {site.tagline}.</p><p className="remote-pill">{site.remote}</p></div>
         <div><span>Explorer</span><Link href="/projets">Projets</Link><Link href="/services">Services</Link><Link href="/competences">Compétences</Link><Link href="/entreprise">Livré d’un Clic SASU</Link><Link href="/cv">CV en ligne</Link><a href={cvPdf} download>CV PDF ↓</a></div>
-        <div><span>Contact & preuves</span><a href={`mailto:${site.email}`}>{site.email}</a><a href={site.github} target="_blank" rel="noreferrer">GitHub ↗</a><a href={site.malt} target="_blank" rel="noreferrer">Malt ↗</a></div>
+        <div><span>Contact & preuves</span><a href={`mailto:${site.email}`}>{site.email}</a><a href={site.github} target="_blank" rel="noreferrer">GitHub ↗</a><a href={site.malt} target="_blank" rel="noreferrer">Malt ↗</a><Link href="/confidentialite">Confidentialité</Link></div>
       </div>
       <div className="shell footer-bottom"><small>© {new Date().getFullYear()} Livré d’un Clic SASU</small><small>Portfolio public — code produit propriétaire conservé en privé.</small></div>
     </footer>
