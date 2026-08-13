@@ -9,6 +9,7 @@
 - [x] Vérifier `npm audit --audit-level=high` sans vulnérabilité haute.
 - [x] Clarifier les captures France Reliance et supprimer toute preuve visuelle ambiguë.
 - [x] Ajouter `wrangler.jsonc` pour un déploiement Cloudflare Workers assets-only reproductible.
+- [x] Ajouter une QA Chromium desktop + mobile couvrant routes, liens, images, navigation, CV, galerie, contact et accessibilité des boutons.
 
 ## Socle commercial
 
@@ -48,15 +49,26 @@
 
 ## P3 — Autorité & preuves
 
-- Ajouter davantage de captures qualifiées lorsqu’elles sont disponibles pour Parayon, RatioPro, France Reliance et Le Billot Pro.
-- Ressources et articles.
-- Témoignages et preuves clients vérifiables.
-- Études de cas enrichies avec métriques lorsque disponibles.
-- Page Livré d’un Clic SASU.
+- [x] Ajouter une page dédiée à Livré d’un Clic SASU et clarifier son rôle derrière les produits.
+- [x] Distinguer explicitement preuves disponibles et limites de preuve dans chaque étude de cas.
+- [x] Relier la page entreprise depuis le portfolio et l’ajouter au sitemap / QA navigateur.
+- [ ] Ajouter davantage de captures qualifiées lorsqu’elles sont réellement disponibles pour Parayon, RatioPro, France Reliance et Le Billot Pro.
+- [ ] Ajouter des liens publics vers les produits uniquement après vérification de leur disponibilité et de leur niveau de finition.
+- [ ] Ajouter des ressources ou articles seulement s’ils apportent une vraie preuve d’expertise.
+- [ ] Ajouter témoignages et preuves clients uniquement lorsqu’ils sont vérifiables et autorisés.
+- [ ] Ajouter des métriques aux études de cas uniquement lorsqu’elles sont sourçables.
 
 ## P4 — Acquisition
 
-- Analytics respectueux de la confidentialité.
-- Monitoring si nécessaire.
-- Prise de rendez-vous.
-- Version anglaise.
+- [ ] Analytics respectueux de la confidentialité.
+- [ ] Monitoring si nécessaire.
+- [ ] Prise de rendez-vous.
+- [ ] Version anglaise.
+
+## Finition avant audit final
+
+- [ ] Vérifier le déploiement réel sur le domaine final après merge.
+- [ ] Audit responsive dédié 320 / 375 / 390 / 430 px et tablette.
+- [ ] Audit Lighthouse production : Performance ≥ 90, Accessibility ≥ 95, Best Practices ≥ 95, SEO ≥ 95.
+- [ ] Vérifier Chrome, Edge, Firefox et Safari sur le site réellement déployé.
+- [ ] Refaire l’audit final preuves, réassurance, conversion, clarté de l’offre et niveau premium.
