@@ -6,6 +6,7 @@ const coreRoutes = [
   "/services/",
   "/competences/",
   "/a-propos/",
+  "/entreprise/",
   "/cv/",
   "/contact/",
   "/formations/",
