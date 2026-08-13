@@ -15,6 +15,15 @@ const products = [
   ["Le Billot Pro", "SaaS métier pour achats, production, stocks et rendements."],
 ] as const;
 
+const companyFacts = [
+  ["Dénomination", "LIVRE D’UN CLIC"],
+  ["Forme", "SASU — société par actions simplifiée unipersonnelle"],
+  ["SIREN", "944 887 280"],
+  ["RCS", "944 887 280 R.C.S. Paris"],
+  ["Capital social", "1 000 €"],
+  ["Siège social", "60 rue François 1er, 75008 Paris"],
+] as const;
+
 export default function Page() {
   return <>
     <PageIntro
@@ -38,6 +47,14 @@ export default function Page() {
     </div></section>
 
     <section className="section"><div className="shell">
+      <SectionTitle eyebrow="Structure vérifiable" title="Une société enregistrée derrière le portfolio." text="Ces repères juridiques sont affichés comme éléments de vérification de la structure, pas comme indicateurs de performance commerciale."/>
+      <div className="grid two">
+        {companyFacts.map(([label, value]) => <article className="card" key={label}><span className="eyebrow">{label}</span><h3>{value}</h3></article>)}
+      </div>
+      <div className="actions"><a className="btn secondary" href="https://www.pappers.fr/entreprise/livre-dun-clic-944887280" target="_blank" rel="noreferrer">Vérifier la fiche entreprise ↗</a></div>
+    </div></section>
+
+    <section className="section alt"><div className="shell">
       <SectionTitle eyebrow="Produits" title="Des terrains métier différents, une même discipline produit." text="Ces noms désignent des produits documentés dans ce portfolio, pas une liste de clients."/>
       <div className="grid two">
         {products.map(([name, text]) => <article className="card" key={name}><span className="eyebrow">Produit documenté</span><h3>{name}</h3><p>{text}</p></article>)}
