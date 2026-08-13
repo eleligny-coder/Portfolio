@@ -1,6 +1,5 @@
 const deploymentHost = process.env.NEXT_PUBLIC_SITE_URL
-  ?? process.env.CF_PAGES_URL
-  ?? "http://localhost:3000";
+  ?? "https://elieleligny.fr";
 
 export const site = {
   name: "Élie Leligny",
@@ -10,7 +9,7 @@ export const site = {
   email: "e.leligny@gmail.com",
   url: deploymentHost.replace(/\/$/, ""),
   github: "https://github.com/eleligny-coder",
-  malt: "https://www.malt.fr/profile/elieleligny",
+  malt: "https://www.malt.fr/profile/elieleligny1",
 };
 
 export const nav = [
@@ -38,7 +37,7 @@ export const skills = [
   ["Systèmes intelligents", "LLM, agents spécialisés, OCR, RAG, analyse documentaire, assistants métier et recommandations"],
   ["Automatisation", "n8n, Make, AutomatorWP, intégrations API, webhooks, automatisation CRM, email, notifications et workflows métier"],
   ["SaaS & paiement", "Stripe Checkout, Billing, Connect, abonnements, commissions, KYC, quotas et contrôle des droits d’accès"],
-  ["Cloud & livraison", "Railway, Cloudflare Pages, Cloudflare Workers, GitHub, Sentry, environnements, monitoring, QA et déploiement"],
+  ["Cloud & livraison", "Railway, Cloudflare Workers, GitHub, Sentry, environnements, monitoring, QA et déploiement"],
 ] as const;
 
 export const trainings = [
@@ -55,5 +54,5 @@ export const method = [
   ["Concevoir", "UX métier, dashboards, formulaires, contenus et design system."],
   ["Construire", "Développement, intégrations et automatisations."],
   ["Tester", "QA, permissions, responsive, paiements, données et parcours critiques."],
-  ["Déployer", "Cloudflare Pages, Railway, monitoring, analytics et amélioration continue."],
+  ["Déployer", "Cloudflare Workers, Railway, monitoring, analytics et amélioration continue."],
 ] as const;

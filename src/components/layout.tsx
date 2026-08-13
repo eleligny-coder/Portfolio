@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { nav, site } from "@/data/site";
 
 const cvPdf = "/documents/elie-leligny-cv-product-builder-full-stack.pdf";
@@ -10,15 +10,28 @@ const cvPdf = "/documents/elie-leligny-cv-product-builder-full-stack.pdf";
 export function Header() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
+  const menuButtonRef = useRef<HTMLButtonElement>(null);
   const isActive = (href: string) => pathname === href || (href !== "/" && pathname.startsWith(`${href}/`));
+
+  useEffect(() => {
+    if (!open) return;
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key !== "Escape") return;
+      setOpen(false);
+      window.requestAnimationFrame(() => menuButtonRef.current?.focus());
+    };
+    window.addEventListener("keydown", onKeyDown);
+    return () => window.removeEventListener("keydown", onKeyDown);
+  }, [open]);
+
   return (
     <header className="header">
       <div className="shell header-inner">
         <Link href="/" className="brand" onClick={() => setOpen(false)} aria-label="Accueil — Élie Leligny">
           <span>EL</span><div><strong>Élie Leligny</strong><small>Product Builder Full Stack</small></div>
         </Link>
-        <button className="menu-button" aria-expanded={open} aria-label={open ? "Fermer le menu" : "Ouvrir le menu"} onClick={() => setOpen(!open)}>{open ? "×" : "☰"}</button>
-        <nav className={open ? "nav open" : "nav"} aria-label="Navigation principale">
+        <button ref={menuButtonRef} type="button" className="menu-button" aria-expanded={open} aria-controls="main-navigation" aria-label={open ? "Fermer le menu" : "Ouvrir le menu"} onClick={() => setOpen(!open)}>{open ? "×" : "☰"}</button>
+        <nav id="main-navigation" className={open ? "nav open" : "nav"} aria-label="Navigation principale">
           {nav.map(([label, href]) => (
             <Link key={href} href={href} className={isActive(href) ? "active" : ""} onClick={() => setOpen(false)}>{label}</Link>
           ))}
