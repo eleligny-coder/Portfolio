@@ -29,12 +29,12 @@ export default defineConfig({
   projects: [
     {
       name: "desktop-chromium",
-      testIgnore: /responsive\.spec\.mjs/,
+      testIgnore: [/responsive\.spec\.mjs/, /cross-browser\.spec\.mjs/],
       use: { ...devices["Desktop Chrome"] },
     },
     {
       name: "mobile-chromium",
-      testIgnore: /responsive\.spec\.mjs/,
+      testIgnore: [/responsive\.spec\.mjs/, /cross-browser\.spec\.mjs/],
       use: { ...devices["Pixel 7"] },
     },
     responsiveProject("responsive-320", 320, 760),
@@ -42,5 +42,15 @@ export default defineConfig({
     responsiveProject("responsive-390", 390, 844),
     responsiveProject("responsive-430", 430, 932),
     responsiveProject("responsive-tablet", 768, 1024),
+    {
+      name: "firefox",
+      testMatch: /cross-browser\.spec\.mjs/,
+      use: { ...devices["Desktop Firefox"] },
+    },
+    {
+      name: "webkit",
+      testMatch: /cross-browser\.spec\.mjs/,
+      use: { ...devices["Desktop Safari"] },
+    },
   ],
 });
