@@ -1,5 +1,11 @@
 import { defineConfig, devices } from "@playwright/test";
 
+const responsiveProject = (name, width, height = 900) => ({
+  name,
+  testMatch: /responsive\.spec\.mjs/,
+  use: { ...devices["Desktop Chrome"], viewport: { width, height } },
+});
+
 export default defineConfig({
   testDir: "./tests/e2e",
   timeout: 30_000,
@@ -21,7 +27,20 @@ export default defineConfig({
     timeout: 20_000,
   },
   projects: [
-    { name: "desktop-chromium", use: { ...devices["Desktop Chrome"] } },
-    { name: "mobile-chromium", use: { ...devices["Pixel 7"] } },
+    {
+      name: "desktop-chromium",
+      testIgnore: /responsive\.spec\.mjs/,
+      use: { ...devices["Desktop Chrome"] },
+    },
+    {
+      name: "mobile-chromium",
+      testIgnore: /responsive\.spec\.mjs/,
+      use: { ...devices["Pixel 7"] },
+    },
+    responsiveProject("responsive-320", 320, 760),
+    responsiveProject("responsive-375", 375, 812),
+    responsiveProject("responsive-390", 390, 844),
+    responsiveProject("responsive-430", 430, 932),
+    responsiveProject("responsive-tablet", 768, 1024),
   ],
 });
