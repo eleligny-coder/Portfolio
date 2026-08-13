@@ -11,7 +11,7 @@ permissions:
 jobs:
   validate:
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 30
     steps:
       - name: Checkout
         uses: actions/checkout@v6
@@ -40,3 +40,17 @@ jobs:
 
       - name: Run browser smoke tests
         run: npx playwright test
+
+      - name: Install Lighthouse CI
+        run: npm install --no-save --package-lock=false @lhci/cli@0.15.x
+
+      - name: Run Lighthouse quality gates
+        shell: bash
+        run: |
+          CHROME_PATH="$(which google-chrome || which google-chrome-stable || which chromium || true)"
+          if [ -z "$CHROME_PATH" ]; then
+            echo "No Chrome/Chromium executable available for Lighthouse CI"
+            exit 1
+          fi
+          export CHROME_PATH
+          npx lhci autorun --config=./lighthouserc.cjs
