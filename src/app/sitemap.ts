@@ -5,7 +5,7 @@ import { site } from "@/data/site";
 export const dynamic = "force-static";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const pages = ["", "/projets", "/services", "/competences", "/a-propos", "/cv", "/contact"];
+  const pages = ["", "/projets", "/services", "/competences", "/a-propos", "/entreprise", "/cv", "/contact"];
   const lastModified = new Date();
 
   return [
@@ -13,7 +13,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       url: `${site.url}${path}`,
       lastModified,
       changeFrequency: path === "" ? "weekly" as const : "monthly" as const,
-      priority: path === "" ? 1 : path === "/projets" ? .9 : .7,
+      priority: path === "" ? 1 : path === "/projets" ? .9 : path === "/entreprise" ? .75 : .7,
     })),
     ...projects.map((project) => ({
       url: `${site.url}/projets/${project.slug}`,
