@@ -95,12 +95,19 @@ cp .env.example .env.local
 npm run dev
 ```
 
-Contrôles locaux :
+Contrôles locaux principaux :
 
 ```bash
 npm run check
 npm audit --audit-level=high
-npm run test:e2e
+```
+
+Pour reproduire la QA navigateur utilisée en CI :
+
+```bash
+npm install --no-save --package-lock=false @playwright/test@1.60.0
+npx playwright install chromium
+npx playwright test
 ```
 
 ## Confidentialité des produits
