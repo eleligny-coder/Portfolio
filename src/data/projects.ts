@@ -163,6 +163,7 @@ export const projects: Project[] = [
     imageAlt: "Interface publique historique de Livré d’un Clic avant abandon de la version WordPress",
     gallery: [
       { src: "/projects/livre-d-un-clic-wordpress-about.webp", alt: "Interface publique historique de Livré d’un Clic", label: "Interface historique WordPress" },
+      { src: "/projects/livre-d-un-clic-wordpress-map-missions.webp", alt: "Carte des missions du prototype WordPress historique de Livré d’un Clic", label: "Carte des missions — prototype historique" },
     ],
     architecture: [
       { label: "CMS & UX", items: ["WordPress", "Elementor", "Pages publiques", "Dashboards"] },
