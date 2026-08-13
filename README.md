@@ -76,18 +76,28 @@ Ce repository contient uniquement le site portfolio public.
 - contact sans backend : préparation d’un email via `mailto:` ;
 - aucune base de données de contact et aucun compte utilisateur.
 
+Guide de déploiement : [`docs/CLOUDFLARE_WORKERS_DEPLOY.md`](docs/CLOUDFLARE_WORKERS_DEPLOY.md).
+
 ## QA et sécurité
 
 La CI GitHub Actions exécute sur les pull requests et `main` :
 
 1. installation reproductible avec `npm ci` ;
 2. `npm audit --audit-level=high` ;
-3. lint ;
-4. typecheck TypeScript ;
-5. build statique Next.js ;
-6. smoke tests **Playwright / Chromium desktop + mobile**.
+3. lint, TypeScript strict et build statique ;
+4. suite **Playwright / Chromium desktop + mobile** ;
+5. matrice responsive **320 / 375 / 390 / 430 / 768 px** avec contrôle d’overflow horizontal ;
+6. quality gate **Lighthouse CI** sur Accueil, Projets et Contact avec médiane de trois runs ;
+7. parcours critiques séparés sous **Firefox et WebKit**.
 
-La suite navigateur vérifie notamment les routes, liens internes, images, navigation desktop/mobile, clavier, téléchargement et impression du CV, cartes projet, galerie/lightbox, formulaire de contact, presse-papiers et noms accessibles des boutons.
+Les seuils Lighthouse sont bloquants :
+
+- Performance ≥ 90 ;
+- Accessibilité ≥ 95 ;
+- Best Practices ≥ 95 ;
+- SEO ≥ 95.
+
+La suite navigateur vérifie notamment les routes, liens internes, images après scroll/lazy-loading, navigation desktop/mobile, clavier, téléchargement et impression du CV, cartes projet, galerie/lightbox, formulaire de contact, presse-papiers, noms accessibles des boutons et parcours critiques multi-moteur.
 
 ```bash
 npm ci
@@ -102,13 +112,22 @@ npm run check
 npm audit --audit-level=high
 ```
 
-Pour reproduire la QA navigateur utilisée en CI :
+Pour reproduire la QA navigateur complète :
 
 ```bash
 npm install --no-save --package-lock=false @playwright/test@1.60.0
-npx playwright install chromium
+npx playwright install --with-deps chromium firefox webkit
 npx playwright test
 ```
+
+Pour reproduire le quality gate Lighthouse après le build :
+
+```bash
+npm install --no-save --package-lock=false @lhci/cli@0.15.x
+npx lhci autorun --config=./lighthouserc.cjs
+```
+
+La checklist détaillée est disponible dans [`docs/QA_CHECKLIST.md`](docs/QA_CHECKLIST.md).
 
 ## Confidentialité des produits
 
