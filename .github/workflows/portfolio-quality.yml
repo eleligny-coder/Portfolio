@@ -73,6 +73,7 @@ jobs:
             process.exit(0);
           }
 
+          const value = (report, audit) => report.audits?.[audit]?.numericValue ?? 0;
           const grouped = new Map();
           for (const file of files) {
             const report = JSON.parse(fs.readFileSync(path.join(reportDir, file), "utf8"));
@@ -82,15 +83,21 @@ jobs:
               pathname = new URL(rawUrl).pathname || "/";
             } catch {}
 
-            const scores = {
+            const run = {
               performance: Math.round((report.categories?.performance?.score ?? 0) * 100),
               accessibility: Math.round((report.categories?.accessibility?.score ?? 0) * 100),
               bestPractices: Math.round((report.categories?.["best-practices"]?.score ?? 0) * 100),
               seo: Math.round((report.categories?.seo?.score ?? 0) * 100),
+              fcp: value(report, "first-contentful-paint"),
+              lcp: value(report, "largest-contentful-paint"),
+              tbt: value(report, "total-blocking-time"),
+              cls: value(report, "cumulative-layout-shift"),
+              speedIndex: value(report, "speed-index"),
+              bytes: value(report, "total-byte-weight"),
             };
 
             if (!grouped.has(pathname)) grouped.set(pathname, []);
-            grouped.get(pathname).push(scores);
+            grouped.get(pathname).push(run);
           }
 
           const median = (values) => {
@@ -98,19 +105,22 @@ jobs:
             const middle = Math.floor(sorted.length / 2);
             return sorted.length % 2
               ? sorted[middle]
-              : Math.round((sorted[middle - 1] + sorted[middle]) / 2);
+              : (sorted[middle - 1] + sorted[middle]) / 2;
           };
+          const whole = (values) => Math.round(median(values));
+          const seconds = (values) => `${(median(values) / 1000).toFixed(2)}s`;
 
           for (const [pathname, runs] of grouped) {
             const scores = {
-              performance: median(runs.map((run) => run.performance)),
-              accessibility: median(runs.map((run) => run.accessibility)),
-              bestPractices: median(runs.map((run) => run.bestPractices)),
-              seo: median(runs.map((run) => run.seo)),
+              performance: whole(runs.map((run) => run.performance)),
+              accessibility: whole(runs.map((run) => run.accessibility)),
+              bestPractices: whole(runs.map((run) => run.bestPractices)),
+              seo: whole(runs.map((run) => run.seo)),
             };
-            const message = `Performance ${scores.performance} | Accessibility ${scores.accessibility} | Best Practices ${scores.bestPractices} | SEO ${scores.seo}`;
+            const scoreMessage = `Performance ${scores.performance} | Accessibility ${scores.accessibility} | Best Practices ${scores.bestPractices} | SEO ${scores.seo}`;
+            const metricMessage = `FCP ${seconds(runs.map((run) => run.fcp))} | LCP ${seconds(runs.map((run) => run.lcp))} | TBT ${whole(runs.map((run) => run.tbt))}ms | CLS ${median(runs.map((run) => run.cls)).toFixed(3)} | Speed Index ${seconds(runs.map((run) => run.speedIndex))} | Transfer ${Math.round(median(runs.map((run) => run.bytes)) / 1024)}KB`;
             const passes = scores.performance >= 90 && scores.accessibility >= 95 && scores.bestPractices >= 95 && scores.seo >= 95;
-            console.log(`::${passes ? "notice" : "error"} title=Lighthouse ${pathname}::${message}`);
+            console.log(`::${passes ? "notice" : "error"} title=Lighthouse ${pathname}::${scoreMessage} | ${metricMessage}`);
           }
           NODE
 
