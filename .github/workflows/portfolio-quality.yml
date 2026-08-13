@@ -53,4 +53,65 @@ jobs:
             exit 1
           fi
           export CHROME_PATH
+
+          set +e
           npx lhci autorun --config=./lighthouserc.cjs
+          LHCI_EXIT=$?
+          set -e
+
+          node <<'NODE'
+          const fs = require("fs");
+          const path = require("path");
+
+          const reportDir = ".lighthouseci";
+          const files = fs.existsSync(reportDir)
+            ? fs.readdirSync(reportDir).filter((file) => /^lhr-.*\.json$/.test(file))
+            : [];
+
+          if (!files.length) {
+            console.log("::error title=Lighthouse diagnostics::No Lighthouse JSON reports were produced");
+            process.exit(0);
+          }
+
+          const grouped = new Map();
+          for (const file of files) {
+            const report = JSON.parse(fs.readFileSync(path.join(reportDir, file), "utf8"));
+            const rawUrl = report.finalDisplayedUrl || report.finalUrl || report.requestedUrl || "http://localhost/";
+            let pathname = rawUrl;
+            try {
+              pathname = new URL(rawUrl).pathname || "/";
+            } catch {}
+
+            const scores = {
+              performance: Math.round((report.categories?.performance?.score ?? 0) * 100),
+              accessibility: Math.round((report.categories?.accessibility?.score ?? 0) * 100),
+              bestPractices: Math.round((report.categories?.["best-practices"]?.score ?? 0) * 100),
+              seo: Math.round((report.categories?.seo?.score ?? 0) * 100),
+            };
+
+            if (!grouped.has(pathname)) grouped.set(pathname, []);
+            grouped.get(pathname).push(scores);
+          }
+
+          const median = (values) => {
+            const sorted = [...values].sort((a, b) => a - b);
+            const middle = Math.floor(sorted.length / 2);
+            return sorted.length % 2
+              ? sorted[middle]
+              : Math.round((sorted[middle - 1] + sorted[middle]) / 2);
+          };
+
+          for (const [pathname, runs] of grouped) {
+            const scores = {
+              performance: median(runs.map((run) => run.performance)),
+              accessibility: median(runs.map((run) => run.accessibility)),
+              bestPractices: median(runs.map((run) => run.bestPractices)),
+              seo: median(runs.map((run) => run.seo)),
+            };
+            const message = `Performance ${scores.performance} | Accessibility ${scores.accessibility} | Best Practices ${scores.bestPractices} | SEO ${scores.seo}`;
+            const passes = scores.performance >= 90 && scores.accessibility >= 95 && scores.bestPractices >= 95 && scores.seo >= 95;
+            console.log(`::${passes ? "notice" : "error"} title=Lighthouse ${pathname}::${message}`);
+          }
+          NODE
+
+          exit "$LHCI_EXIT"
