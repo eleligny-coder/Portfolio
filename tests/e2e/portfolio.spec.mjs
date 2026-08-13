@@ -34,6 +34,23 @@ async function expectRoute(page, path) {
   await expect(page).toHaveURL(pathPattern(path));
 }
 
+async function expectAllImagesToLoad(page, route) {
+  const images = page.locator("img");
+  const count = await images.count();
+
+  for (let index = 0; index < count; index += 1) {
+    const image = images.nth(index);
+    await image.scrollIntoViewIfNeeded();
+    await expect.poll(
+      async () => image.evaluate((element) => ({
+        loaded: element.complete && element.naturalWidth > 0,
+        src: element.currentSrc || element.getAttribute("src"),
+      })),
+      { message: `Image failed to load on ${route}`, timeout: 10_000 },
+    ).toMatchObject({ loaded: true });
+  }
+}
+
 test("all generated routes render without browser errors and all images load", async ({ page }) => {
   const pageErrors = [];
   page.on("pageerror", (error) => pageErrors.push(error.message));
@@ -44,11 +61,7 @@ test("all generated routes render without browser errors and all images load", a
     expect(response.status(), `HTTP error on ${route}`).toBeLessThan(400);
     await expect(page.locator("body")).toBeVisible();
     await expect(page.locator("h1").first()).toBeVisible();
-
-    const brokenImages = await page.locator("img").evaluateAll((images) => images
-      .filter((image) => !image.complete || image.naturalWidth === 0)
-      .map((image) => image.getAttribute("src")));
-    expect(brokenImages, `Broken images on ${route}`).toEqual([]);
+    await expectAllImagesToLoad(page, route);
   }
 
   expect(pageErrors).toEqual([]);
