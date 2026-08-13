@@ -19,8 +19,9 @@
 - [x] SEO technique de base.
 - [x] Captures projet intégrées.
 - [x] CV en ligne et CV PDF.
-- [x] Contact direct sans compte ni stockage de données.
-- [ ] Finaliser les mentions légales et la confidentialité avant mise en production finale.
+- [x] Contact direct sans compte ni stockage de données par le site.
+- [x] Publier une page de confidentialité cohérente avec le fonctionnement réel du portfolio.
+- [ ] Publier les mentions légales complètes après validation d’un numéro de téléphone professionnel.
 
 ## P1 — Finition premium & performance
 
@@ -44,7 +45,9 @@
 - [x] Renforcer les headers navigateur et la Permissions-Policy.
 - [x] Empêcher l’indexation des URLs de preview `workers.dev`.
 - [x] Conserver un cache long pour les assets Next fingerprintés.
-- [ ] Renseigner la description, le site et les topics du repository GitHub depuis les paramètres du repository.
+- [x] Aligner le README GitHub avec Workers Static Assets, la QA Playwright, l’URL Malt et les limites de preuve.
+- [x] Relier la personne et Livré d’un Clic SASU dans les données structurées du site.
+- [ ] Renseigner la description et les topics du repository depuis les paramètres GitHub.
 - [ ] Ajouter des métriques aux études de cas uniquement lorsqu’elles sont vérifiables.
 
 ## P3 — Autorité & preuves
@@ -52,6 +55,7 @@
 - [x] Ajouter une page dédiée à Livré d’un Clic SASU et clarifier son rôle derrière les produits.
 - [x] Distinguer explicitement preuves disponibles et limites de preuve dans chaque étude de cas.
 - [x] Relier la page entreprise depuis le portfolio et l’ajouter au sitemap / QA navigateur.
+- [x] Ajouter l’identité juridique vérifiable de Livré d’un Clic SASU et un lien de vérification externe.
 - [ ] Ajouter davantage de captures qualifiées lorsqu’elles sont réellement disponibles pour Parayon, RatioPro, France Reliance et Le Billot Pro.
 - [ ] Ajouter des liens publics vers les produits uniquement après vérification de leur disponibilité et de leur niveau de finition.
 - [ ] Ajouter des ressources ou articles seulement s’ils apportent une vraie preuve d’expertise.
