@@ -15,6 +15,7 @@ export type Project = {
   eyebrow: string;
   summary: string;
   status: string;
+  previewUrl?: string;
   accent: string;
   problem: string;
   solution: string;
@@ -64,7 +65,8 @@ export const projects: Project[] = [
     name: "RatioPro",
     eyebrow: "Copilote IA de rentabilité",
     summary: "SaaS B2B pour transformer ventes, factures, achats, recettes, stocks et pertes en décisions de marge actionnables.",
-    status: "Produit SaaS en finalisation commerciale",
+    status: "En cours de développement — preview disponible",
+    previewUrl: "https://ratiopro-preview-dev.pages.dev",
     accent: "lime",
     problem: "Les restaurateurs disposent de données dispersées, difficiles à rapprocher et à transformer en actions concrètes sur leurs marges.",
     solution: "Un cockpit métier qui centralise les flux, scanne les factures, calcule les coûts et met en évidence les fuites de profit.",
@@ -92,7 +94,8 @@ export const projects: Project[] = [
     name: "France Reliance™",
     eyebrow: "Marketplace SaaS multi-rôles",
     summary: "Écosystème territorial reliant particuliers, prestataires, entreprises et associations autour de missions et paiements sécurisés.",
-    status: "MVP en développement — stabilisation technique",
+    status: "En cours de développement — preview disponible",
+    previewUrl: "https://france-reliance-preview.e-leligny.workers.dev",
     accent: "cyan",
     problem: "Les services locaux, paiements, profils et acteurs solidaires utilisent des outils dispersés et des parcours peu structurés.",
     solution: "Une plateforme centrée sur la mission avec candidatures, validation, Solde Sécurisé Stripe™, dashboards, rôles et traçabilité.",
