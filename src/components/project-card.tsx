@@ -45,7 +45,14 @@ export function ProjectCard({ project, featured = false }: { project: Project; f
         <p>{project.summary}</p>
         {!featured && <div className="status">{project.status}</div>}
         <div className="tags">{project.stack.slice(0, featured ? 7 : 5).map((item) => <span key={item}>{item}</span>)}</div>
-        <Link href={`/projets/${project.slug}`} className="text-link">Voir l’étude de cas →</Link>
+        <div className="actions">
+          <Link href={`/projets/${project.slug}`} className="text-link">Voir l’étude de cas →</Link>
+          {project.previewUrl && (
+            <a className="text-link" href={project.previewUrl} target="_blank" rel="noopener noreferrer">
+              Lien preview — en cours de développement ↗
+            </a>
+          )}
+        </div>
       </div>
     </article>
   );

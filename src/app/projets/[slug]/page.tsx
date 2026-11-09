@@ -32,6 +32,13 @@ export default async function ProjectPage({params}:{params:Promise<{slug:string}
         <h1>{p.name}</h1>
         <p className="summary">{p.summary}</p>
         <div className="project-meta-row"><div className="status">Statut : {p.status}</div><span className="private-code-badge">Dépôt applicatif privé</span></div>
+        {p.previewUrl && (
+          <div className="actions">
+            <a className="btn secondary" href={p.previewUrl} target="_blank" rel="noopener noreferrer">
+              Lien preview — en cours de développement ↗
+            </a>
+          </div>
+        )}
         <div className="tags hero-tags">{p.stack.slice(0,6).map(x=><span key={x}>{x}</span>)}</div>
         {p.languages && <div className="language-proof">{p.languages.map(x=><strong key={x}>{x}</strong>)}</div>}
       </div>
